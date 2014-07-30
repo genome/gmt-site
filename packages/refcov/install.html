@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>RefCov (0.3)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/refcov/res/images/icon_48.png" width="48" height="48" alt="RefCov"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>RefCov <span class="version">0.3</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+                            <h2>Ubuntu 10.04</h2>
+<hr>
+<p>Before you install software from this site on your computer, you must first run the command below.  This command adds our software repository to the package management system’s configuration on your computer.  You only need to run this command once, so if you have already installed software from this site on your computer, you don’t need to do this part again (although it won’t hurt if you do). Simply run the command below to configure your computer to install software from this site.</p>
+
+<pre class="terminal">wget -q -O - https://apt.genome.wustl.edu/ubuntu/files/install.sh | sudo bash</pre>
+<p>To install RefCov, run:</p>
+<p class="terminal">sudo gmt install gmt-refcov</p>
+<h3>Behind the Scenes:</h3>
+<p>If you’d prefer to configure your system manually or are uncomfortable running a script downloaded from the web, you can follow the instructions below rather than the simple commands above.</p>
+<h4>Repository Linking:</h4>
+<p>The Genome Modeling System uses Ubuntu’s native package management system, <a href="http://wiki.debian.org/Apt"><span class="caps">APT</span></a>, leveraging our package repository at apt.genome.wustl.edu. To configure <span class="caps">APT</span> on your computer to be able to install software from our package repositry, run the following commands.</p>
+
+<pre class="terminal">sudo apt-add-repository "deb http://apt.genome.wustl.edu/ubuntu lucid-genome main"
+wget https://apt.genome.wustl.edu/ubuntu/files/genome-institute.asc
+sudo apt-key add genome-institute.asc
+sudo apt-get update</pre>
+<p>The above commands only need to be run once on each computer on which you want to install our software, i.e., you only need to add our repository to APT’s configuration once.</p>
+<h4>Install RefCov:</h4>
+<p>Once your computer has been configured to install software from our package repository, simply run the command below to install RefCov.</p>
+<p class="terminal">sudo apt-get install gmt-refcov</p>
+<h2>Usage:</h2>
+<hr>
+<p>
+To get help on RevCov ,
+
+use the -h option, e.g.:
+
+</p>
+<p class="terminal">
+gmt ref-cov -h
+</p>
+<h2>Manuals:</h2>
+<hr>
+<p>To see the manual page:</p>
+<p class="terminal">man gmt ref-cov</p>
+
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/RefCov" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.3</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

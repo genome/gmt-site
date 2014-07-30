@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>RefCov (0.3)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/refcov/res/images/icon_48.png" width="48" height="48" alt="RefCov"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>RefCov <span class="version">0.3</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h2>Introduction</h2>
+<hr/>
+
+<p>
+The RefCov software suite was written as a toolkit to provide multiple
+methods for analyzing coverage of sequence data across a reference. As
+such, it does not answer a single question, but rather provides the
+ability to formulate and answer multiple analytical questions. In a
+typical use case, RefCov is provided a SAM/BAM file containing reads
+aligned to a genomic reference and a BED file defining genomic regions
+of interest within which RefCov will calculate a variety of sequence
+coverage (breadth and depth) metrics. Methods and functionality are
+provided for everything from general coverage statistics to
+per-base-position information as determined by sequence read
+alignments to a reference backbone. This software was written with
+“real world” analysis of large, highly parallel sequencing platform
+coverage for multiple genomes in mind. As such, consideration was
+given to scalability and processing approaches for massive input
+data. The toolkit does not provide an alignment algorithm, but rather
+is a post-processing application for externally called alignments
+(e. g., by <a href="http://bio-bwa.sourceforge.net/">BWA</a>).
+The software requires very little in terms of input and will run
+minimally based on an alignment SAM/BAM file and a region of interest
+(ROI) file in proper BED format. This suite was written in Perl and is
+a constituent part of our larger Genome Modeling System. The SAM/BAM
+file format is interrogated using <a href="http://www.bioperl.org/">BioPerl</a>'s
+Bio-SamTools module and subsequent coverage calculations are done
+efficiently using <a href="http://pdl.perl.org/">PDL</a>. The software
+will transparently evaluate which reads should be used in whole or in
+part based on a given ROI's start and stop boundaries. Once the
+software creates a reference coverage object, any number of methods
+may be utilized whose functions range from coverage topography metrics
+to assisting in direct comparison of two experimental conditions or
+disparate technologies.
+</p>
+
+
+<h2>How to Cite RefCov</h2>
+<hr/>
+<p>Please note the version number, and use the following URL to cite RefCov:</p>
+
+<p>
+Wylie T, Walker J, &amp; Mardis ER<br/>
+URL: http://gmt.genome.wustl.edu/gmt-refcov
+</p>
+
+
+          </div>
+            
+            
+            <h2 style="margin: 1em 20px">Latest RefCov News:</h2>
+            <hr/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/05/23/gmt_refcov_0.3_released.html">RefCov v0.3 Released</a></h2>
+  <div class="entry-date"><abbr title="May 23, 2012" class="published">May 23, 2012</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/refcov/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>
+RefCov v0.3 provides critical fixes and several new features. Fixes include restoring several modules that were absent in the previous release. New features include: 1) cluster-coverage for detecting contiguous clusters of sequence reads across a reference, 2) the ability to evaluate coverage of entire chromosomes using the BAM file header as the region-of-interest, ex. --roi-file-path=$BAM --roi-file-format=bam, 3) normalization of coverage using a defined Perl-compatible equation, 4) relative coverage based on a defined list of size bins, and 5) optional output of the chromosome start and end as BED-style columns.
+</p>
+<p>
+<a href="/packages/refcov/">More Information</a>
+</p>
+
+  </div>
+
+</div>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/RefCov" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.3</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>TIGRA-SV ()</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/tigra-sv/res/images/icon_48.png" width="48" height="48" alt="TIGRA-SV"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>TIGRA-SV <span class="version"></span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h2 id="introduction">Introduction</h2>
+
+<hr />
+
+<p>TIGRA-SV is a software package for analyzing structural variants in data sets produced with second-generation sequencing. Structural variants (SVs) are extended genome alterations such as large insertions, deletions, inversions, and translocations. They are an abundant class of genome variants in humans and can have significant biological effects.  The study of SV has lagged behind that of SNPs due to their complexity. Second generation sequencing has greatly facilitated the study of SVs, allowing many more SVs to be identified, covering a wider size range.  Many algorithms exist that predict SVs from such data sets. But they usually work on limited aspects of the dataset. Some use read pairing abnormality, some use split read alignment, etc. To be able to incorporate multiple prediction algorithms, and utilize the data to a fuller extent, we developed TIGRA-SV. TIGRA-SV works by extracting reads around potential SV breakpoints provided by SV prediction algorithms, then assemble these read pools separately, generating nucleotide resolution sequences, in the end, the assembled potential SV sequences are aligned to the reference. By doing so, a potential SV can be either validated or rejected and the crude predicted coordinates (from various prediction algorithms) are unified and refined. Along the process, TIGRA-SV generates metrics for the assembly and the alignment, so tricky cases can be better judged.
+The core of TIGRA-SV is TIGRA, The Iterative Graph Routing Assembler (manuscript in preparation), a de Bruijn graph-based assembler. This type of assembler works by generating a de Bruijn graph of the reads, with kmers (sequences of length k) as nodes and k-1 overlaps as edges. Then the underlying genome sequence is constructed as a path through the graph. The assembly process is the recovery of this path. TIGRA utilizes mutiple kmers iteratively in a single assembly run, producing a more contiguous assembly than that produced with a single kmer size. In contrast, for most assemblers, the user has to generate multiple assemblies with different kmers to find the optimal value for a genome. Effects were also made to better address heterozygous SVs. Many assemblers aim to produce a single haploid consensus sequence, sacrificing the recovery of minor alleles (in a heterozygous region) for better assembly contiguity. Aiming to capture the SVs of the diploid human genome, TIGRA was modified to retain both alleles when there is a likely SV.  Another effect of heterozygous SVs is that when aligned to the referece, the assembly will break around the heterozygous site and the SV sequence by itself sometimes cannot be aligned to the reference. Therefore, we implemented an extension module that reconstructs both alleles with common flanking regions to facilitate the alignment and confirmation of SVs.</p>
+
+
+
+          </div>
+            
+            
+            <h2 style="margin: 1em 20px">Latest TIGRA-SV News:</h2>
+            <hr/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+        <a href="https://github.com/genome/tigra-sv" class="btn_view_on_github">View on GitHub</a> <br/>
+      
+
+      
+        <a href="http://biostars.org/t/TIGRA-SV" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

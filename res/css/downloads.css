@@ -1,0 +1,19 @@
+.downloads_filter ul li {
+    text-align: left;
+    width: 300px;
+    display: block;
+    background-color:#181810;
+    border: solid 1px #333333;
+    padding: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.downloads_filter ul li:hover {
+    background-color: #333333;
+}
+
+.downloads_filter a {
+    text-decoration: none;
+    color: #ffffff;
+}

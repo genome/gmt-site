@@ -1,0 +1,653 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Genome Modeling Tools - Main</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main.css?20140729163800" media="screen,print"/>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/res/js/jquery.liveFilter.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#menu_main a").currentPage({
+      indexPage: "index.html",
+      anyPath: true
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="background">
+        <div id="header">
+          <!-- _includes/header.html -->
+
+<div id="title">
+  <a id="title_link" href="/index.html">Genome Modeling Tools</a>
+</div>
+
+        </div>
+
+        <div id="menu_main">
+          <ul>
+  
+    <li><a href="/index.html">Home</a></li>
+  
+    <li><a href="/about.html">About</a></li>
+  
+    <li><a href="/faq.html">FAQ</a></li>
+  
+</ul>
+
+        </div>
+
+        <div id="content">
+
+          <div id="content_main">
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2014/07/18/dgidb_v1.66_released.html">DGIdb v1.66 Released</a></h2>
+  <div class="entry-date"><abbr title="July 18, 2014" class="published">July 18, 2014</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/dgidb/res/images/gmt_dgidb_48.png" /></div>
+      </div>
+    
+
+    <p>DGIdb version 1.66 has been released - this release contains clinical trial data from MyCancerGenome.</p>
+
+
+<p>You can <a href="https://github.com/genome/dgi-db/releases/tag/v1.66">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2014/06/14/somatic-sniper_v1.0.4_released.html">SomaticSniper v1.0.4</a></h2>
+  <div class="entry-date"><abbr title="June 14, 2014" class="published">June 14, 2014</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/somatic-sniper/res/images/gmt_somatic_sniper_48.png" /></div>
+      </div>
+    
+
+    <h4 id="major-changes">Major Changes</h4>
+<p>This release adds options to filter loss-of-heterozygosity and gain-of-reference allele calls from SomaticSniper output. Loss-of-heterozygosity calls are defined as calls where the tumor genotype is fully a subset of the normal genotype. Gain-of-heterozygosity calls are defined as those where the reference allele is not present in the normal genotype call, but <em>is</em> present in the tumor. For example the following calls would both be suppressed,</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ref</th>
+      <th>Tumor</th>
+      <th>Normal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>GG</td>
+      <td>AG</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>AG</td>
+      <td>GG</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="minor-changes">Minor Changes</h4>
+<ul>
+  <li>build-common is now utilized as a git subtree. Downloads from github will now be functional and recursive clones are no longer necessary. </li>
+</ul>
+
+
+<p>You can <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.4">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2014/03/10/mendelscan_v1.2.1_released.html">MendelScan v1.2.1</a></h2>
+  <div class="entry-date"><abbr title="March 10, 2014" class="published">March 10, 2014</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/mendelscan/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>This release is a minor fix to v1.2 and addresses a couple of VEP annotation (native output) format bugs. A secondary output file (.excluded) now lists variants excluded from the main output file due to lack of VEP annotation. Also, sites with 2+ alternate alleles will be reported in multiple lines (one per alternate allele) when VEP native output format is provided.</p>
+
+
+<p>You can <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.1">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2014/03/05/mendelscan_v1.2.0_released.html">MendelScan v1.2.0</a></h2>
+  <div class="entry-date"><abbr title="March 05, 2014" class="published">March 05, 2014</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/mendelscan/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>We fixed a bug related to segmentation scoring, added broader VEP output format compatibility, and enabled preliminary recessive scoring functionality for the “score” subcommand.</p>
+
+<p>If you use MendelScan to aid your research, please cite the publication:
+Koboldt DC, Larson DE, Sullivan LS, Bowne SJ, Steinberg KM, et al. Exome-based mapping and variant prioritization for inherited Mendelian disorders. Am J Hum Genet. doi:10.1016/j.ajhg.2014.01.016</p>
+
+
+<p>You can <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.0">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2013/10/23/mendelscan_v1.1.1.0_released.html">MendelScan v1.1.1</a></h2>
+  <div class="entry-date"><abbr title="October 23, 2013" class="published">October 23, 2013</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/mendelscan/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>This is the initial release of MendelScan, a software package for analyzing variants identified by family-based sequencing of rare genetic diseases. There are three main functions included with this release:</p>
+
+<p><code>java -jar MendelScan.jar score</code> – prioritize variants in a VCF based upon segregation, annotation, population frequency, and gene expression
+<code>java -jar MendelScan.jar rhro</code> – apply rare heterozygote rule out to map dominant disease genes 
+<code>java -jar MendelScan.jar sibd</code> – apply shared IBD analysis to map disease genes</p>
+
+<p>A manuscript describing this tool has been submitted; in the interim, please cite MendelScan by noting the version number and citing its home URL: http://gmt.genome.wustl.edu/mendelscan.</p>
+
+
+<p>You can <a href="https://github.com/genome/mendelscan/releases/tag/v1.1.1.0">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2013/10/16/introducing-dgidb.html">Introducing DGIdb</a></h2>
+  <div class="entry-date"><abbr title="October 16, 2013" class="published">October 16, 2013</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/dgidb/res/images/gmt_dgidb_48.png" /></div>
+      </div>
+    
+
+    <p>In the era of high throughput genomics, investigators are frequently presented with lists of mutated or otherwise altered genes implicated in disease. Numerous resources exist to help form hypotheses about how such genomic events might be targeted therapeutically or prioritized for drug development. However, utilizing these resources typically requires tedious manual review of literature and knowledge bases. No informatics tools currently exist which mine these resources and provide a simple interface for searching lists of genes against the existing compendia of both known or predicted drug-gene interactions and potentially druggable genes. The Drug-Gene Interaction database (DGIdb) addresses this challenge. Drug-gene interactions have been mined from existing databases and literature to populate DGIdb. Similarly, genes have been categorized as potentially druggable according to membership in selected pathways, molecular functions and gene families. Currently, DGIdb contains 2,611 genes and 6,307 drugs involved in 14,144 drug-gene interactions, and 6,761 genes that belong to one or more of 39 potentially druggable gene categories. Users can enter a gene or list of genes to retrieve all known or potentially druggable genes in that list. Results can be filtered by source, interaction type, or treatment type and are sorted by source trust level. Our goal was to create a user-friendly search tool and comprehensive database of genes that have the potential to be druggable with a particular focus on cancer. DGIdb can be accessed programmatically or through a web-based interface at <a href="http://dgidb.org/">dgidb.org</a>.</p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2013/05/07/pindel_0.2.4_available.html">Pindel 0.2.4 Available</a></h2>
+  <div class="entry-date"><abbr title="May 07, 2013" class="published">May 07, 2013</abbr></div>
+  <div class="entry-content">
+    
+
+    <p>An updated version of Pindel is available for download.</p> 
+
+<p>Pindel is a program that detects short indels and complex 
+structural variants (large deletions, inversions, tandem 
+duplications, mobile element insertions and translocations) 
+from next-generation sequence data using pattern growth.</p>
+
+<p>It takes either extracted reads (using sam2pindel or 
+bam2pindel.pl) or multiple bam files as input. A pindel2vcf 
+converter is provided to report variant calls in VCF format.</p>
+
+<p>The source code for Pindel is available on 
+<a href="https://github.com/genome/pindel">GitHub</a>, and 
+pre-built packages for Ubuntu 10.04 systems are available from
+The Genome Institute.  For installation instructions, see the 
+<a href="http://gmt.genome.wustl.edu/pindel/0.2.4/">Pindel
+project page.</a></p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/09/06/iBWA_0.5_alpha_released.html">iBWA Alpha v0.5 Released</a></h2>
+  <div class="entry-date"><abbr title="September 06, 2012" class="published">September 06, 2012</abbr></div>
+  <div class="entry-content">
+    
+
+    <p>Source code and Ubuntu 10.04 (64-bit) packages of <a href="/ibwa/0.5/">iBWA Alpha v0.5</a> are now available for testing. iBWA is a fork of <a href="http://bio-bwa.sourceforge.net">Heng Li's BWA aligner</a> with support for iteratively adding alternate haplotypes, reference patches, and variant hypotheses. This enables you to leverage existing tools and pipelines in the diverse BWA ecosystem while also creating new analysis opportunities.</p>
+
+<ul>
+<li>Take advantage of improvements to the human reference made available by the <a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/">Genome Reference Consortium</a>.
+</li><li>Represent alternate alignments in the context of the primary human reference.
+</li>
+</ul>
+<p>For additional information about BWA please see Heng Li's <a href="http://bio-bwa.sourceforge.net">BWA @ SourceForge</a> or <a href="http://bio-bwa.sourceforge.net/bwa.shtml">BWA's manual page</a>.</p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/08/21/genome_music_v0.4_released.html">Genome MuSiC v0.4 Released</a></h2>
+  <div class="entry-date"><abbr title="August 21, 2012" class="published">August 21, 2012</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/genome-music/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p><a href="/packages/genome-music/">MuSiC v0.4</a> is now available for download. This release adds new visualization tools, performance improvements, support for TCGA MAF v2.3, and coverage files in UCSC WIG format when BAMs are impractical. Here is a complete changelog:
+<ul>
+    <li>Added tools to generate typical visualizations like Kaplan-Meier survival estimates, and mutation status matrices.</li>
+    <li>Support for TCGA Mutation Annotation Format (MAF) version 2.3.</li>
+    <li>Performance improvements in mutation rate calculations, and more efficient memory usage.</li>
+    <li>Added support for wiggle track format files describing coverage, if BAMs are unavailable.</li>
+</ul>
+</p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/05/23/gmt_refcov_0.3_released.html">RefCov v0.3 Released</a></h2>
+  <div class="entry-date"><abbr title="May 23, 2012" class="published">May 23, 2012</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/refcov/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>
+RefCov v0.3 provides critical fixes and several new features. Fixes include restoring several modules that were absent in the previous release. New features include: 1) cluster-coverage for detecting contiguous clusters of sequence reads across a reference, 2) the ability to evaluate coverage of entire chromosomes using the BAM file header as the region-of-interest, ex. --roi-file-path=$BAM --roi-file-format=bam, 3) normalization of coverage using a defined Perl-compatible equation, 4) relative coverage based on a defined list of size bins, and 5) optional output of the chromosome start and end as BED-style columns.
+</p>
+<p>
+<a href="/packages/refcov/">More Information</a>
+</p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/05/08/somatic-sniper_v1.0.0.2_released.html">SomaticSniper v1.0.0</a></h2>
+  <div class="entry-date"><abbr title="May 08, 2012" class="published">May 08, 2012</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/somatic-sniper/res/images/gmt_somatic_sniper_48.png" /></div>
+      </div>
+    
+
+    <p>The latest release of SomaticSniper, The Genome Institute’s somatic
+SNV calling workhorse, adds an alternative statistical model that
+better accounts for the rarity of somatic events by jointly
+considering the tumor and normal genotypes.  This version also adds
+native support for the VCF and BED formats as output.  The VCF output
+contains information useful for downstream filtering, e. g., fraction
+of reads on the forward and reverse strands, average read mapping
+quality, and average base quality for reads/bases supporting the
+variant allele and those supporting the reference allele.</p>
+
+
+<p>You can <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.0.2">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/04/27/genome_music_0.3_released.html">Genome MuSiC v0.3 Released</a></h2>
+  <div class="entry-date"><abbr title="April 27, 2012" class="published">April 27, 2012</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/genome-music/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>
+MuSiC (Mutational Significance in Cancer) 0.3 is now available for download featuring numerous fixes and several new features. MuSiC performs a variety of statistical analyses on the somatic (and germline) alterations discovered in any cancer cohort. Improvements in this version include an enhanced significantly mutated gene test which introduces the ability to 1) take into account sample-specific mutation rates and 2) identify significantly mutated non-genic regions of the genome. The clinical correlation module now features a generalized linear model option allowing for the elimination of covariate influences on mutation-phenotype relationships. Support for MAF 2.2 and for Pfam annotation of GRCh37 (hg19) are now standard. Additionally, several MuSiC components have been optimized and parallelized for faster execution.
+</p>
+<p>
+<a href="/packages/genome-music/">More Information</a>
+</p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/01/10/tigra_sv_0.1_released.html">TIGRA-SV v0.1 Released</a></h2>
+  <div class="entry-date"><abbr title="January 10, 2012" class="published">January 10, 2012</abbr></div>
+  <div class="entry-content">
+    
+
+    <p>The initial release of TIGRA-SV is available for download.  TIGRA-SV is a program that conducts targeted local assembly of structural variants (SV) using the iterative graph routing assembly (TIGRA) algorithm (L. Chen, unpublished). It takes input as a list of putative SV calls and a set of bam files that contain reads mapped to a reference genome. For each SV call, it assembles the set of reads that were mapped or partially mapped to the region of interest (ROI) in the corresponding bam files. TIGRA-SV is quite effective at improving the SV prediction accuracy in short reads analysis and can produce accurate breakpoint sequences.</p>
+<p><a href="/tigra-sv">More information</a></p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2011/07/12/somatic-sniper_v0.7.4.9_released.html">SomaticSniper v0.7.4 Released</a></h2>
+  <div class="entry-date"><abbr title="July 12, 2011" class="published">July 12, 2011</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/somatic-sniper/res/images/gmt_somatic_sniper_48.png" /></div>
+      </div>
+    
+
+    <p>The purpose of this program is to identify single nucleotide positions that are different between tumor and normal (or, in theory, any two bam files). It takes a tumor bam and a normal bam and compares the two to determine the differences. It outputs a file in a format very similar to Samtools consensus format. It uses the genotype likelihood model of MAQ (as implemented in Samtools) and then calculates the probability that the tumor and normal genotypes are different. This probability is reported as a somatic score. The somatic score is the Phred-scaled probability (between 0 to 255) that the Tumor and Normal genotypes are not different where 0 means there is no probability that the genotypes are different and 255 means there is a probability of 1 – 10<sup>(255/-10)</sup> that the genotypes are different between tumor and normal. This is consistent with how the SAM format reports such probabilities.</p>
+
+
+<p>You can <a href="https://github.com/genome/somatic-sniper/releases/tag/v0.7.4.9">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2011/07/02/breakdancer_1.2_released.html">BreakDancer v1.2 Released</a></h2>
+  <div class="entry-date"><abbr title="July 02, 2011" class="published">July 02, 2011</abbr></div>
+  <div class="entry-content">
+    
+
+    <p>
+The latest release of <a href="/breakdancer/1.2/">BreakDancer</a>, the Genome Institute's structural variation (SV) detector, is now available for download.  
+<br>
+The new release has small bug fixes to ensure it runs reliably on the latest Ubuntu distribution.  It is now available as a deb package, installable readily onto Ubuntu Linux or other Debian-based systems.
+</p>
+<p> <a href="/breakdancer/1.2/install.html">Installation Instructions</a> </p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2011/06/20/joinx_1.1_released.html">JoinX v1.1 Released</a></h2>
+  <div class="entry-date"><abbr title="June 20, 2011" class="published">June 20, 2011</abbr></div>
+  <div class="entry-content">
+    
+
+    <p>
+Joinx is a lightweight tool for performing set operations (e.g., intersection, difference, …) on genomic data contained in .bed files. It also provides some limited analysis functions (concordance reports). An important assumption that joinx makes is that the input data is always sorted. This allows it to compute its results in an efficient manner.
+</p>
+<p> <a href="/joinx">More Information</a> </p>
+
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2011/06/20/genome_music_0.2_released.html">Genome MuSiC v0.2 Released</a></h2>
+  <div class="entry-date"><abbr title="June 20, 2011" class="published">June 20, 2011</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/genome-music/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>
+The decreasing cost of sequencing has moved the focus of cancer genomics beyond single genome studies to the analysis of tens or hundreds of patients diagnosed with similar cancers. Besides the routine discovery and validation of SNVs, indels, and SVs in individual genomes, it is now paramount to systematically analyze the function and recurrence of mutations across a cohort, and to describe how they interact with one other and with the associated clinical data. To this end we have developed the Mutational Significance In Cancer package (MuSiC). It consists of a suite of downstream analysis tools designed to (1) apply statistical methods to identify significantly mutated genes, (2) highlight significantly altered pathways, (3) investigate the proximity of amino acid mutations in the same gene, (4) search for gene-based or site-based correlations to mutations and relationships between mutations themselves, (5) correlate mutations to clinical features, and (6) cross-reference findings with relevant databases such as Pfam, COSMIC, and OMIM.
+</p>
+<p>
+<a href="/packages/genome-music">More Information</a>
+</p>
+
+  </div>
+
+</div>
+
+            
+
+          </div>
+
+          <div id="content_sidebar">
+            <br/>
+<div class="rounded_bg">
+  <h2>GMT Packages</h2>
+
+  <table class="tools">
+    <tbody>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/mendelscan/index.html">
+              <img width="16" height="16" src="/packages/mendelscan/res/images/icon_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/mendelscan/index.html">MendelScan</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/joinx/index.html">
+              <img width="16" height="16" src="/packages/joinx/res/images/icon_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/joinx/index.html">JoinX</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/breakdancer/index.html">
+              <img width="16" height="16" src="/packages/breakdancer/res/images/genome_breakdancer_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/breakdancer/index.html">BreakDancer</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/dgidb/index.html">
+              <img width="16" height="16" src="/packages/dgidb/res/images/gmt_dgidb_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/dgidb/index.html">DGIdb</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/tigra-sv/index.html">
+              <img width="16" height="16" src="/packages/tigra-sv/res/images/icon_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/tigra-sv/index.html">TIGRA-SV</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/pindel/index.html">
+              <img width="16" height="16" src="/packages/pindel/res/images/genome_pindel_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/pindel/index.html">Pindel</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/somatic-sniper/index.html">
+              <img width="16" height="16" src="/packages/somatic-sniper/res/images/gmt_somatic_sniper_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/somatic-sniper/index.html">SomaticSniper</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/genome-music/index.html">
+              <img width="16" height="16" src="/packages/genome-music/res/images/icon_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/genome-music/index.html">Genome MuSiC</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/refcov/index.html">
+              <img width="16" height="16" src="/packages/refcov/res/images/icon_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/refcov/index.html">RefCov</a></td>
+        </tr>
+      
+        
+        <tr>
+          <td class="tool_icon">
+              <a href="/packages/ibwa/index.html">
+              <img width="16" height="16" src="/packages/ibwa/res/images/icon_16.png"/>
+              </a>
+          </td>
+
+          <td class="tool_name"><a href="/packages/ibwa/index.html">iBWA Alpha</a></td>
+        </tr>
+      
+
+<!--
+      <tr>
+        <td class="tool_icon"><a href="/fqgrep"><img width="16" height="16" src="/fqgrep/current/res/images/icon_16.png"/></a></td>
+
+        <td class="tool_name"><a href="/fqgrep">fqgrep</a></td>
+      </tr>
+
+      <tr>
+        <td class="tool_icon"><a href="/sff2fastq"><img width="16" height="16" src="/sff2fastq/current/res/images/icon_16.png"/></a></td>
+
+        <td class="tool_name"><a href="/sff2fastq">sff2fastq</a></td>
+      </tr>
+
+      <tr>
+        <td class="tool_icon"><a href="/jiraclient"><img width="16" height="16" src="/res/images/icons/jira_icon_16.png"/></a></td>
+
+        <td class="tool_name"><a href="/jiraclient">jiraclient</a></td>
+      </tr>
+
+      <tr>
+        <td class="tool_icon"><a href="/ur"><img width="16" height="16" src="/res/images/icons/genome_default_16.png"/></a></td>
+
+        <td class="tool_name"><a href="/ur">UR</a></td>
+      </tr>
+-->
+
+    </tbody>
+  </table>
+
+</div>
+
+          </div>
+
+        </div>
+
+        <div id="footer">
+          <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

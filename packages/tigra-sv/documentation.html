@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>TIGRA-SV ()</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/tigra-sv/res/images/icon_48.png" width="48" height="48" alt="TIGRA-SV"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>TIGRA-SV <span class="version"></span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h1 id="examples">EXAMPLES</h1>
+
+<hr />
+
+<h2 id="run-pcr-format-sv-calls">Run pcr format SV calls:</h2>
+
+<p class="terminal">
+tigra-sv washu_pilot2_trio_large_deletions.pcr pcr_filelist.txt
+</p>
+
+<h2 id="run-breakdancer-format-sv-calls">Run breakdancer format SV calls:</h2>
+
+<p class="terminal">
+tigra-sv -b breakdancer.sv /gscuser/tumor.bam /gscuser/normal.bam
+</p>
+
+<h1 id="tigra-sv">TIGRA-SV</h1>
+
+<hr />
+
+<h2 id="name">NAME</h2>
+<p>TIGRA-SV - a tool that conducts targeted local assembly of structural variants (SV).</p>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p class="terminal">
+tigra-sv sv_file a.bam b.bam …<br />
+<br />
+tigra-sv sv_file bam_list_file
+</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>TIGRA-SV is a program that conducts targeted local assembly of structural variants (SV) using
+the iterative graph routing assembly (TIGRA) algorithm (L. Chen, unpublished). It takes as input
+a list of putative SV calls and a set of bam files that contain reads mapped to a reference genome
+such as NCBI build36. For each SV call, it assembles the set of reads that were mapped or partially
+mapped to the region of interest (ROI) in the corresponding bam files. Instead of outputing a single
+consensus sequence, TIGRA-SV outputs all the alternative alleles in the ROI as long as they received 
+sufficient sequence coverage (usually &gt;= 2x). It is shown that TIGRA-SV is quite effective at improving 
+the SV prediction accuracy in short reads analysis and can produce accurate breakpoint sequences that 
+are valuable to understand the origin, mechanism and pathology underlying the SVs.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<dl>
+<dt>-A INT</dt>
+<dd>Esimated maximal insert size [500]</dd>
+
+<dt>-l INT</dt>
+<dd>Flanking size [500]</dd>
+
+<dt>-w INT</dt>
+<dd>Pad local reference by additional [200] bp on both ends</dd>
+
+<dt>-q INT</dt>
+<dd>Only assemble reads with mapping quality &gt; [1]</dd>
+
+<dt>-N INT</dt>
+<dd>Number of mismatches required to be tagged as poorly mapped [5]</dd>
+
+<dt>-p INT</dt>
+<dd>Ignore cases that have average read depth greater than [1000]</dd>
+
+<dt>-Q INT </dt>
+<dd>Minimal BreakDancer score required for analysis [0]</dd>
+
+<dt>-I STRING</dt>
+<dd>Read intermediate files from DIR instead of creating them</dd>
+
+<dt>-L STRING</dt>
+<dd>Ignore calls supported by libraries that contains (comma separated) STRING</dd>
+
+<dt>-c STRING</dt>
+<dd>Specify chromosome for position 2 to parallelzing job</dd>
+
+<dt>-b</dt>
+<dd>Check when the format is in breakdancer</dd>
+
+<dt>-r</dt>
+<dd>Whether write reference to a file with .ref.fa as the suffix</dd>
+
+<dt>-d</dt>
+<dd>Whether to write dumped reads to a file with .fa as the suffix</dd>
+
+<dt>-R</dt>
+<dd>Reference file location with the full path</dd>
+</dl>
+
+<h1 id="author">AUTHOR</h1>
+
+<hr />
+
+<p>Xian Fan, Ken Chen, Lei Chen </p>
+
+<h1 id="disclaimer">DISCLAIMER</h1>
+
+<hr />
+
+<p>This software is provided “as is” without warranty of any kind.</p>
+
+
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+        <a href="https://github.com/genome/tigra-sv" class="btn_view_on_github">View on GitHub</a> <br/>
+      
+
+      
+        <a href="http://biostars.org/t/TIGRA-SV" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

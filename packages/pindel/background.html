@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Pindel ()</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/pindel/res/images/genome_pindel_48.png" width="48" height="48" alt="Pindel"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Pindel <span class="version"></span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="quick-start.html">Quick Start</a></li>
+                  
+                  <li><a href="background.html">Background</a></li>
+                  
+                  <li><a href="user-manual.html">User Manual</a></li>
+                  
+                  <li><a href="faq.html">FAQ</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h1 id="background">Background</h1>
+
+<hr />
+
+<p>This page provides some background information on the way Pindel works. </p>
+
+<p><img src="deletions-and-insertions.png" alt="" /></p>
+
+<p>Figure 1. A pattern growth approach, as implemented in Pindel, to detect simple deletions (a) and insertions (b) at nucleotide-resolution. In the preprocessing step, all reads are mapped to the reference genome. Then the mapping results are examined to select those paired reads that mapped with indels or only one end can be mapped. Our Pindel program uses the mapped read to determine the anchor point on the reference genome and the direction of unmapped read (or mapped with indels). Knowing the anchor point, the direction to search for the unmapped read and the user defined Maximum Deletion Size, a sub-region in the reference genome can be located, where Pindel will break the unmapped reads into 2 (deletion) or 3 (short insertion) fragments and map the two terminal fragments separately. </p>
+
+<h3 id="detecting-large-deletions">Detecting large deletions</h3>
+<p>When we map paired-end reads to the reference genome, for the majority of the reads, both ends can be mapped to the reference genome. However, a small portion of them might have only one end mapped to the reference genome. One of the possibilities is that the unmapped read mate spans the break point of a large deletion event in the test sample compared to the reference genome as shown in Figure 1a. Thus, those unmapped reads actually carry the information about the precise break points of the deletion event. If we can find a proper position to split the read into two fragments, which can be mapped back to the reference separately, we will be able to compute the exact positions of the break points and also the fragment deleted compared to the reference. If we collect multiple reads that support the same incidence, we will be more confident about the deletion event in the test sample.</p>
+
+<h3 id="detecting-medium-sized-insertions">Detecting medium sized insertions</h3>
+<p>In the previous section, we explained how to compute the precise break points of deletion events. The deletion size can be rather large as long as we find unique matches for the two parts of the unmapped read. It is, however, difficult to infer the fragment for large insertions directly from the read sequence. In this case we aim to compute the precise break points and the fragment inserted in the medium sized range (up to 16 bases for 36 bp reads or for longer reads: ReadLength? - 20). The computational procedure is very similar to that used for searching deletions.</p>
+
+<h3 id="simulation-and-real-data">Simulation and real data</h3>
+<p>In order to evaluate Pindel, we have first simulated indels on human chromosome X and examined how well Pindel can detect those simulated indels in the presence of SNPs and sequencing errors. When we increased maximum deletion size from 10 bp to 100 kb, we were able to recover about 80% of deletions with a &lt;2% false discovery rate. As for insertions, we can correctly detect around 80% of the insertions of 1–16 bases in the presence of SNPs and sequencing errors. For 36 bp paired-end reads, the probability for Pindel to detect insertion events longer than 16 bp is decreasing as the size of insertion events goes up. To test Pindel on real data, we analyzed the genome of a male Yoruba from Ibadan, Nigeria (YRI, sample NA18507). Pindel found 146,843 deletions (1bp-10kb) and 142,908 short insertions (1-16bp). 91.2% of 1-16bp deletions and 87.2% of 1-16bp insertions overlap with calls from Illumina.</p>
+
+<h3 id="new-developments">New developments</h3>
+
+<p><a href="new-development.png"><img src="new-development.png" width="600" height="233" alt="New Developments" /></a>
+<em>(click for full-size image)</em></p>
+
+<p>Figure 2. Detection of complex structural variants (a. large deletions; b. tandem duplications; c. inversions) with (d, e and f) or without (a, b and c) non-template sequence.</p>
+
+<p>As shown in Figure 2b and 2c, in addition to the previously established Pindel method for the detection of deletions (Figure 1a and Figure 2a), we use the pattern growth and split-read approach to identify tandem duplications and inversions by carefully examining mapping locations, strands and directions of the two fragments of the unmapped end. For example, if one unmapped read is across the 5’ breakpoint of an inversion as shown in Figure 2c (red arrow in ‘sample’), the 3’ end of the unmapped read will be mapped to the reference normally related to the mapped read (green in ‘reference’) while the 5’ end will be aligned downstream of that and on the opposite strand (broken red arrow in ‘reference’). Thanks to the pattern growth and split-read algorithms we will be able to capture the non-template sequence (yellow in Fig 2d-f) inserted during double-strand break repair. Thus in Figure 2e the unmapped read (red and yellow in ‘sample’) will be split into three fragments, the yellow sequence being the inserted non-template sequence.</p>
+
+
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+        <a href="https://github.com/genome/pindel" class="btn_view_on_github">View on GitHub</a> <br/>
+      
+
+      
+        <a href="http://biostars.org/t/Pindel" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

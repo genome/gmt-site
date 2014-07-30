@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <div class="doc_nav_path">
+  <p>
+  <a href="/genome-shipit/genome/0.80/doc/genome.html">genome</a> ::
+  <span class="last">music</span>
+  </p>
+</div>
+
+<div id="sub_commands_container">
+  <h1>sub commands</h1>
+  <div id="sub_commands">
+    <div>
+      <table>
+
+        <tbody><tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-proximity.html">proximity</a></td>
+          <td>Perform a proximity analysis on a list of mutations.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-cosmic-omim.html">cosmic-omim</a></td>
+          <td>Compare the amino acid changes of supplied mutations to COSMIC and OMIM databases.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-play.html">play</a></td>
+          <td>Run the full suite of MuSiC tools sequentially.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-clinical-correlation.html">clinical-correlation</a></td>
+          <td>Correlate phenotypic traits against mutated genes, or against individual variants</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-pfam.html">pfam</a></td>
+          <td>Add Pfam annotation to a MAF file</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-mutation-relation.html">mutation-relation</a></td>
+          <td>Identify relationships of mutation concurrency or mutual exclusivity in genes across cases.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-smg.html">smg</a></td>
+          <td>Identify significantly mutated genes.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-plot.html">plot</a></td>
+          <td>Generate relevant plots and visualizations for MuSiC.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-survival.html">survival</a></td>
+          <td>Create survival plots and P-values for clinical and mutational phenotypes.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-path-scan.html">path-scan</a></td>
+          <td>Find signifcantly mutated pathways in a cohort given a list of somatic mutations.</td></tr>
+
+        <tr><td><a href="/genome-shipit/genome-music/0.4/doc/genome-music-bmr.html">bmr</a></td>
+          <td>Calculate gene coverages and background mutation rates.</td></tr>
+
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<h1><a name="___top"></a>
+  <p>genome music</p>
+</h1>
+
+<ul>
+  <li><a href="#___sec0">NAME</a></li>
+  <li><a href="#___sec1">VERSION</a></li>
+  <li><a href="#___sec2">SYNOPSIS</a></li>
+  <li><a href="#___sec3">DESCRIPTION</a></li>
+  <li><a href="#___sec4">LICENSE</a></li>
+  <li><a href="#___sec5">AUTHORS</a></li>
+  <li><a href="#___sec6">CREDITS</a></li>
+  <li><a href="#___sec7">BUGS</a></li>
+  <li><a href="#___sec8">SEE ALSO</a></li></ul>
+
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
+
+<p>genome music - Mutational Significance in Cancer (Cancer Mutation Analysis)</p>
+<br>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
+
+<p>This document describes genome music version 0.0401 (2013-12-30 at 16:01:08)</p>
+<br>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music ...</p>
+<br>
+<h1><a name="___sec3" href="#___top">DESCRIPTION</a></h1>
+
+<p>The MuSiC suite is a set of tools aimed at discovering the significance of somatic mutations found within a given cohort of cancer samples,
+and with respect to a variety of external data sources.
+The standard inputs required are:</p>
+
+<dl>
+  <dt><a name="1._mapped_reads_in_BAM_format">1.
+    mapped reads in BAM format</a></dt>
+
+  <dd>
+  </dd><dt><a name="2._predicted_or_validated_SNVs_or_indels_in_mutation_annotation_format_(MAF)">2.
+    predicted or validated SNVs or indels in mutation annotation format (MAF)</a></dt>
+
+  <dd>
+  </dd><dt><a name="3._a_list_of_regions_of_interest_(typically_the_boundaries_of_coding_exons)">3.
+    a list of regions of interest (typically the boundaries of coding exons)</a></dt>
+
+  <dd>
+  </dd><dt><a name="4._any_relevant_numeric_or_categorical_clinical_data.">4.
+    any relevant numeric or categorical clinical data.</a></dt>
+</dl>
+
+<p>The formats for inputs 3.
+and 4.
+are:</p>
+
+<dl>
+  <dt><a name="3._Regions_of_Interest_File:">3.
+    Regions of Interest File:</a></dt>
+
+  <dd>
+  <ul>
+    <li>Do not use headers</li>
+
+    <li>4 columns,
+    which are [chromosome start-position(1-based) stop-position(1-based) gene_name]</li>
+  </ul>
+
+  </dd><dt><a name="4._Clinical_Data_Files:">4.
+    Clinical Data Files:</a></dt>
+
+  <dd>
+  <ul>
+    <li>Headers are required</li>
+
+    <li>At least 1 sample_id column and 1 attribute column,
+    with the format being [sample_id clinical_data_attribute clinical_data_attribute ...]</li>
+
+    <li>The sample_id must match the sample_id listed in the MAF under "Tumor_Sample_Barcode" for relating the mutations of this sample.</li>
+
+    <li>The header for each clinical_data_attribute will appear in the output file to denote relationships with the mutation data from the MAF.</li>
+  </ul>
+  </dd>
+</dl>
+
+<p>Descriptions for the usage of each tool (each sub-command) can be found separately.</p>
+
+<p>The <b>play</b> command runs all of the sub-commands serially on a selected input set.</p>
+<br>
+<h1><a name="___sec4" href="#___top">LICENSE</a></h1>
+
+<p>Copyright (C) 2007-2013 Washington University in St.
+Louis.</p>
+
+<p>MuSiC is released under the Lesser GNU Public License (LGPL) version 3.
+See the associated LICENSE file in this distribution.</p>
+<br>
+<h1><a name="___sec5" href="#___top">AUTHORS</a></h1>
+
+<p>This software is developed by the analysis and engineering teams at The Genome Institute at Washington University School of Medicine in St.
+Louis.</p>
+
+<p>Development of MuSiC is funded by the National Human Genome Research Institute,
+grants #U54HG003079 (PI Richard K.
+Wilson) and #U01HG006517 (PIs Li Ding and David J.
+Dooling).</p>
+
+<p>If you find MuSiC to be useful,
+please consider citing the reference that describes this work:</p>
+
+<p>Nathan D.
+Dees,
+Qunyuan Zhang,
+Cyriac Kandoth,
+Michael C.
+Wendl,
+William Schierding,
+Daniel C.
+Koboldt,
+Thomas B.
+Mooney,
+Matthew B.
+Callaway,
+David Dooling,
+Elaine R.
+Mardis,
+Richard K.
+Wilson,
+and Li Ding.
+2012.
+MuSiC: Identifying mutational significance in cancer genomes.
+Genome Research 22:1589-1598.</p>
+<br>
+<h1><a name="___sec6" href="#___top">CREDITS</a></h1>
+
+<p>The MuSiC suite uses tabix,
+by Heng Li.
+See http://samtools.sourceforge.net/tabix.shtml.</p>
+
+<p>MuSiC depends on copies of data from the following databases,
+packaged in a form useable for quick analysis:</p>
+
+<pre> * KEGG - http://www.genome.jp/kegg/
+ * COSMIC - http://www.sanger.ac.uk/genetics/CGP/cosmic/
+ * OMIM - http://www.ncbi.nlm.nih.gov/omim
+ * Pfam - http://pfam.sanger.ac.uk/
+ * SMART - http://smart.embl-heidelberg.de/
+ * SUPERFAMILY - http://supfam.cs.bris.ac.uk/SUPERFAMILY/
+ * PatternScan - http://www.expasy.ch/prosite/</pre>
+<br>
+<h1><a name="___sec7" href="#___top">BUGS</a></h1>
+
+<p>For defects with any software in the genome namespace,
+contact genome-dev ~at~ genome.wustl.edu.</p>
+<br>
+<h1><a name="___sec8" href="#___top">SEE ALSO</a></h1>
+
+<p><b>genome</b>(1)</p>
+<br>
+
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h2>Introduction<br>
+<hr></h2>
+<p>The decreasing cost of sequencing has moved the focus of cancer genomics beyond single genome studies to the analysis of tens or hundreds of patients diagnosed with similar cancers. Besides the routine discovery and validation of SNVs, indels, and SVs in individual genomes, it is now paramount to systematically analyze the function and recurrence of mutations across a cohort, and to describe how they interact with one other or associate to clinical data. To this end we have developed the Mutational Significance In Cancer (MuSiC) suite of tools. It consists of downstream analysis tools that can:</p>
+<ol>
+  <li>Apply statistical methods to identify significantly mutated genes</li>
+  <li>Highlight significantly altered pathways</li>
+  <li>Investigate the proximity of amino acid mutations in the same gene</li>
+  <li>Search for gene-based or site-based correlations to mutations and relationships between mutations themselves</li>
+  <li>Correlate mutations to clinical features, using typical correlation measures, and generalized linear models</li>
+  <li>Cross-reference findings with relevant databases such as Pfam, <span class="caps">COSMIC</span>, and <span class="caps">OMIM</span></li>
+  <li>Generate typical visualizations like Kaplan-Meier survival estimates, and mutation status matrices</li>
+</ol>
+<p>In an attempt to remain versatile and powerful, MuSiC incorporates a command-line interface with minimal inputs, described as follows:</p>
+<ol>
+  <li><strong>Coverage:</strong> Mapped reads from a group of tumor/normal sample pairs in <span class="caps">BAM</span> format. <span class="caps">UCSC</span> <span class="caps">WIG</span> files describing coverage may be used if BAMs are unavailable.</li>
+  <li><strong>Variants:</strong> The predicted or validated SNVs and indels from the cohort in <span class="caps">TCGA</span> <span class="caps">MAF</span> format (<span class="caps">VCF</span> support coming soon).</li>
+  <li><strong>Regions of Interest:</strong> A set of regions the user is interested in studying, typically the boundaries of coding regions, but can be expanded to non-coding <span class="caps">RNA</span>, conserved regions, whole genome, chromosome bands, etc.</li>
+  <li><strong>Clinical data:</strong> Any relevant clinical data segregated as qualitative and quantitative types (to apply appropriate statistical methods).</li>
+  <li><strong>Reference sequence:</strong> Must correspond to the <span class="caps">BAM</span>/<span class="caps">WIG</span> files used. HG18, GRCh37, non-human genomes, microbiome, squished transcriptome, etc.</li>
+</ol>
+<p>The tools in the suite may be run individually, or may be automated serially. If you decide to parallelize execution, note that a few tools require the outputs of others. Here are the important bits:</p>
+<ul>
+  <li><strong>bmr calc-bmr</strong> requires the files generated by <strong>bmr calc-covg</strong></li>
+  <li><strong>smg</strong> requires the <strong>gene_mrs</strong> file generated by <strong>bmr calc-bmr</strong></li>
+  <li><strong>path-scan</strong> requires the <strong>gene_covgs</strong> directory generated by <strong>bmr calc-covg</strong></li>
+  <li><strong>mutation-relation</strong> is computationally expensive, and impractical with more than 100 genes. So it is a good idea to set its <strong>—gene-list</strong> to the significantly mutated gene list generated by <strong>smg</strong></li>
+</ul>
+<p>Updates to MuSiC are made available for distribution and served immediately to standard updating mechanisms on Ubuntu and other Debian systems via our applications server.</p>
+
+
+          </div>
+            
+            
+            <h2 style="margin: 1em 20px">Latest Genome MuSiC News:</h2>
+            <hr/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/08/21/genome_music_v0.4_released.html">Genome MuSiC v0.4 Released</a></h2>
+  <div class="entry-date"><abbr title="August 21, 2012" class="published">August 21, 2012</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/genome-music/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p><a href="/packages/genome-music/">MuSiC v0.4</a> is now available for download. This release adds new visualization tools, performance improvements, support for TCGA MAF v2.3, and coverage files in UCSC WIG format when BAMs are impractical. Here is a complete changelog:
+<ul>
+    <li>Added tools to generate typical visualizations like Kaplan-Meier survival estimates, and mutation status matrices.</li>
+    <li>Support for TCGA Mutation Annotation Format (MAF) version 2.3.</li>
+    <li>Performance improvements in mutation rate calculations, and more efficient memory usage.</li>
+    <li>Added support for wiggle track format files describing coverage, if BAMs are unavailable.</li>
+</ul>
+</p>
+
+  </div>
+
+</div>
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2012/04/27/genome_music_0.3_released.html">Genome MuSiC v0.3 Released</a></h2>
+  <div class="entry-date"><abbr title="April 27, 2012" class="published">April 27, 2012</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/genome-music/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>
+MuSiC (Mutational Significance in Cancer) 0.3 is now available for download featuring numerous fixes and several new features. MuSiC performs a variety of statistical analyses on the somatic (and germline) alterations discovered in any cancer cohort. Improvements in this version include an enhanced significantly mutated gene test which introduces the ability to 1) take into account sample-specific mutation rates and 2) identify significantly mutated non-genic regions of the genome. The clinical correlation module now features a generalized linear model option allowing for the elimination of covariate influences on mutation-phenotype relationships. Support for MAF 2.2 and for Pfam annotation of GRCh37 (hg19) are now standard. Additionally, several MuSiC components have been optimized and parallelized for faster execution.
+</p>
+<p>
+<a href="/packages/genome-music/">More Information</a>
+</p>
+
+  </div>
+
+</div>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2011/06/20/genome_music_0.2_released.html">Genome MuSiC v0.2 Released</a></h2>
+  <div class="entry-date"><abbr title="June 20, 2011" class="published">June 20, 2011</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/genome-music/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>
+The decreasing cost of sequencing has moved the focus of cancer genomics beyond single genome studies to the analysis of tens or hundreds of patients diagnosed with similar cancers. Besides the routine discovery and validation of SNVs, indels, and SVs in individual genomes, it is now paramount to systematically analyze the function and recurrence of mutations across a cohort, and to describe how they interact with one other and with the associated clinical data. To this end we have developed the Mutational Significance In Cancer package (MuSiC). It consists of a suite of downstream analysis tools designed to (1) apply statistical methods to identify significantly mutated genes, (2) highlight significantly altered pathways, (3) investigate the proximity of amino acid mutations in the same gene, (4) search for gene-based or site-based correlations to mutations and relationships between mutations themselves, (5) correlate mutations to clinical features, and (6) cross-reference findings with relevant databases such as Pfam, COSMIC, and OMIM.
+</p>
+<p>
+<a href="/packages/genome-music">More Information</a>
+</p>
+
+  </div>
+
+</div>
+
+            
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

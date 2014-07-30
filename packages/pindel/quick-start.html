@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Pindel ()</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/pindel/res/images/genome_pindel_48.png" width="48" height="48" alt="Pindel"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Pindel <span class="version"></span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="quick-start.html">Quick Start</a></li>
+                  
+                  <li><a href="background.html">Background</a></li>
+                  
+                  <li><a href="user-manual.html">User Manual</a></li>
+                  
+                  <li><a href="faq.html">FAQ</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h1 id="quick-start">Quick Start</h1>
+
+<style type="text/css">
+.scrollable {
+  width: 585px;
+  overflow: auto;
+  white-space: pre;
+}
+</style>
+
+<hr />
+
+<p>This is a very brief introduction on how to run Pindel.</p>
+
+<p>We will use the fasta file hs_ref_chr20.fa as the reference genome. The reads that we want to compare against the reference are in a Pindel format file called COLO-829_20-p_ok. We want Pindel to write the output files to a separate directory called output (so before calling Pindel, we can create the directory: <code>mkdir output</code>).</p>
+
+<p>To run Pindel, we can use the following command on the data in the demo folder:</p>
+
+<pre class="terminal scrollable">
+mkdir output
+./pindel -f demo/hs_ref_chr20.fa -p demo/COLO-829_20-p_ok.txt -c 20 -o output/ref
+./pindel -f demo/simulated_reference.fa -i demo/simulated_config.txt -c ALL -o output/simulated
+</pre>
+
+<p>The output directory will now look like:
+&lt;pre class="terminal scrollable"&gt;
+-rw-r–r– 1 root root  17961311 2011-05-23 09:54 ref_D
+-rw-r–r– 1 root root     40203 2011-05-23 09:54 ref_TD
+-rw-r–r– 1 root root     38546 2011-05-23 09:54 ref_INV
+-rw-r–r– 1 root root  16364718 2011-05-23 09:54 ref_SI
+-rw-r–r– 1 root root     22946 2011-05-23 09:54 ref_LI
+-rw-r–r– 1 root root    285266 2011-05-23 09:54 ref_BP
+&lt;/pre&gt;</p>
+
+<p>In general, pindel is used as follows:</p>
+
+<pre class="terminal scrollable">
+  ./pindel -f &lt;reference.fa&gt; -p &lt;pindel_input&gt; [and/or -i bam_configuration_file] -c &lt;chromosome_name&gt; -o &lt;prefix_for_output_files&gt;
+</pre>
+<p>If you wish to use Pindel directly on a BAM-file, instead of first converting the BAM-file into a Pindel input file with bam2pindel, you need to take the following steps:</p>
+
+<p>1) create a bam-configuration file, consisting of one line per BAM-file that you want Pindel to process. Every line should contain the name of a bam-file, the expected average insert size, and a label to indicate the identity of the sample. For example:</p>
+
+<pre class="terminal scrollable">
+tumor_sample_1222.bam 250 TUMOR_1222
+somatic_sample_1222.bam 250 HEALTHY_1222
+</pre>
+
+<p>2) run pindel with the -i option, so</p>
+
+<pre class="terminal scrollable">
+./pindel -f hs_ref_GRCh37.fa -i 1222config.txt -c ALL -o sample_1222
+</pre>
+
+<p>The output files should then contain all detected indels and SVs relative to the reference, and the labels will indicate in which samples each indel and SV occurred.</p>
+
+<p>Pindel has many parameters that you can set to increase speed (multithreading) or change the balance between sensitivity and specificity. The parameters are:</p>
+
+<h5 id="required-parameters">Required parameters</h5>
+
+<pre class="terminal scrollable">
+-f/--fasta               the reference genome sequences in fasta format
+-p/--pindel-file         the Pindel input file; (either this or a bam configuration file is required).
+-i/--config-file         the bam config file; either this or a pindel input file is required. Per line: path and file name of bam, insert 
+                            size and sample tag. For example: /data/tumour.bam  400  tumour
+-o/--output-prefix       Output prefix
+-c/--chromosome          Which chr/fragment. Pindel will process reads for one chromosome each time. ChrName must be the same as in reference 
+                            sequence and in read file. '-c ALL' will make Pindel loop 
+                            over all chromosomes. The search for indels and SVs can also be limited to a specific region; 
+                                -c 20:10,000,000 will only look for indels and SVs after position 10,000,000 == [10M, end], 
+                                -c 20:5,000,000-15,000,000 will report indels in the range between and including the bases at 
+                                  position 5,000,000 and 15,000,000 = [5M, 15M]	
+</pre>
+
+<h5 id="parameters-affecting-runtime-and-memory-usage">Parameters affecting runtime and memory usage</h5>
+
+<pre class="terminal scrollable">
+-T/--number_of_threads   the number of threads Pindel will use (default 1). More threads assures lower runtime, but requires 
+                            multiple processors
+-w/--window_size         for saving RAM, divides the reference in bins of X million bases and only analyzes the reads per bin 
+                            (default 10 (=10 million)). A smaller bin size will reduce memory but will increase runtime slightly.
+</pre>
+
+<h5 id="parameters-affecting-which-structural-variants-are-reported">Parameters affecting which structural variants are reported</h5>
+
+<pre class="terminal scrollable">
+-x/--max_range_index             the maximum size of structural variations to be detected; the higher this number, the greater the 
+                                    number of SVs reported, but the computational cost and memory requirements increase, as does the 
+                                    rate of false positives. 1=128, 2=512, 3=2,048, 4=8,092, 5=32,368, 6=129,472, 7=517,888, 8=2,071,552, 
+                                    9=8,286,208 (maximum 9, default 5)
+-r/--report_inversions           report inversions (default true)
+-t/--report_duplications         report tandem duplications (default true)
+-l/--report_long_insertions      report insertions of which the full sequence cannot be deduced because of their length (default true)
+-k/--report_breakpoints          report breakpoints (default true)
+-s/--report_close_mapped_reads   report reads of which only one end (the one closest to the mapped read of the paired-end read) could 
+                                    be mapped (default false)
+-n/--min_NT_size                 only report inserted (NT) sequences in deletions greater than this size (default 50)
+-v/--min_inversion_size          only report inversions greater than this number of bases (default 50)
+</pre>
+
+<h5 id="parameters-affecting-sensitivity-and-selectivity">Parameters affecting sensitivity and selectivity</h5>
+
+<pre class="terminal scrollable">
+-d/--min_num_matched_bases           only consider reads as evidence if they map with more than this number of bases to the reference (default 30)
+-a/--additional_mismatch             Pindel will only map part of a read to the reference genome if there are no other candidate positions 
+                                        with no more than the specified number of mismatches position. The bigger this value, the more accurate 
+                                        but less sensitive. (default value 1)
+-m/--min_perfect_match_around_BP     at the point where the read is split into two, there should at least be this number of perfectly matching bases 
+                                        between read and reference (default value 3)
+-e/--sequencing_error_rate           the expected fraction of sequencing errors (default 0.05)
+-u/--maximum_allowed_mismatch_rate   only reads with fewer mismatches with the reference genome than this fraction will be considered (default 0.1)
+</pre>
+
+<h5 id="miscellaneous-parameters">Miscellaneous parameters</h5>
+<pre class="terminal scrollable">
+-b/--breakdancer         [file name]. Pindel is able to use calls from other SV methods such as BreakDancer to further increase sensitivity and specificity.  
+                            BreakDancer result or calls from any methods must in the format:   ChrA LocA stringA ChrB LocB stringB other
+-Q                       [file name] The list of BreakDancer calls with Pindel support information. 
+                            Format: chr   Loc_left   Loc_right   size   type   index
+                            For example, "1	72766323 	72811840 	45516	D	11970" means the deletion event chr1:72766323-72811840 of size 45516 is 
+                            reported as an event with index 11970 in Pindel report of deletion. 
+-h/--help                show the command line options of Pindel
+</pre>
+
+
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+        <a href="https://github.com/genome/pindel" class="btn_view_on_github">View on GitHub</a> <br/>
+      
+
+      
+        <a href="http://biostars.org/t/Pindel" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

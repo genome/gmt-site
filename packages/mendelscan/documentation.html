@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>MendelScan (v1.2.1)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/mendelscan/res/images/icon_48.png" width="48" height="48" alt="MendelScan"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>MendelScan <span class="version">v1.2.1</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h2 id="documentation">Documentation</h2>
+<hr />
+
+<p>MendelScan is a command-line program with multiple subcommands (e.g. score, rhro, and sibd). Each subcommand has a unique set of inputs and outputs. For the list of available subcommands, enter:</p>
+
+<pre class="terminal">
+java -jar MendelScan.jar --help
+</pre>
+
+<h2 id="available-subcommands">Available Subcommands</h2>
+<hr />
+
+<p>These subcommands are currently supported:</p>
+
+<pre class="terminal">
+java -jar MendelScan.jar score &#35; Prioritize a VCF
+java -jar MendelScan.jar rhro  &#35; Perform RHRO analysis
+java -jar MendelScan.jar sibd  &#35; Perform SIBD analysis
+</pre>
+
+<p>For detailed usage information, enter the subcommand followed by -h or –help, e.g.:</p>
+
+<pre class="terminal">
+java -jar MendelScan.jar score -h
+</pre>
+
+<p>For those familiar with Java, the auto-generated <a href="http://genome.github.io/mendelscan/">Javadoc</a> documentation may be useful as well.</p>
+
+<h3 id="score-variant-scoring-and-prioritization">score: Variant Scoring and Prioritization</h3>
+
+<p>The <code>score</code> command of MendelScan takes 4 inputs:</p>
+
+<ol>
+  <li>A pedigree file in [PED format][PED] that indicates the name, gender, and affectation status of the samples in the VCF. Samples in the VCF but not in the PED file will be treated as affected females.</li>
+  <li>A VCF file that has been annotated with dbSNP information (a task that can be completed with the current dbSNP VCF file and the [joinx][] utility).</li>
+  <li>Variant annotation information in Variant Effect Predictor (VEP) format, ideally with canonical, hgnc, Polyphen, SIFT, and Condel options.</li>
+  <li>Gene expression for the tissue(s) of interest. This should be a one-column text file with HUGO symbols ordered according to their expression level (highest to lowest). This is optional but highly recommended; many gene expression datasets are freely available.</li>
+</ol>
+
+<p>MendelScan calculates four individual scores (segregation, population, annotation, and expression) for each variant. Each score is a value between 0 and 1 reflecting the likelihood that the variant could be disease-causing. The default settings will prioritize novel/rare protein-altering variants in highly expressed genes that segregate in autsomal-dominant fashion. Many of the scoring parameters can be adjusted to suit different kinds of studies. An overall score, taken as the product of the four scores, reflects the relative priority (higher = more likely to cause disease) of variants based on these criteria.</p>
+
+<p>The output file contains each variant along with the overall and individual scores, as well as annotation, population, expression, and segregation data that were used to compute them. A VCF output option is also available; it places an similar but abbreviated information in the INFO field.</p>
+
+<h3 id="rhro-rare-heterozygote-rule-out">rhro: Rare Heterozygote Rule Out</h3>
+
+<p>The <code>rhro</code> subcommand of MendelScan takes three inputs:</p>
+
+<ol>
+  <li>A pedigree file in [PED format][PED] that indicates the name, gender, and affectation status of the samples in the VCF. Samples in the VCF but not in the PED file will be treated as affected females.</li>
+  <li>A VCF file that has been annotated with dbSNP information (a task that can be completed with the current dbSNP VCF file and the [joinx][] utility).</li>
+  <li>A BED file of chromosome centromere coordinates (optional but recommended).</li>
+</ol>
+
+<p>The RHRO method identifies candidate regions consistent with autosomal dominant inheritance based on the idea that a disease-causing haplotype will manifest regions of rare heterozygous variants shared by all affecteds, and an absence of homozygous differences between affected pairs (which would indicate that a pair had no haplotype in common).</p>
+
+<p>There are two output files from this command. One contains all informative variants (rare heterozygotes shared by affecteds, or variant positions with homozygous differences between affected pairs). The second output is a window of RHRO regions that are consistent with autosomal dominant inheritance given the inputs and assumptions described here.</p>
+
+<h3 id="sibd-shared-identity-by-descent">sibd: Shared Identity-by-Descent</h3>
+
+<p>The <code>sibd</code> subcommand of MendelScan uses BEAGLE FastIBD results to identify regions of maximum identity-by-descent (IBD) among affected pairs. It requires the user to run BEAGLE FastIBD on the sequencing data (which requires conversion of the VCF to BEAGLE format and a “markers” file). This should be done on a per-chromosome basis. Then, the following files should be provided as inputs to MendelScan for each chromosome:</p>
+
+<ol>
+  <li>A pedigree file in [PED format][PED] that indicates the name, gender, and affectation status of the samples in the VCF. Samples in the VCF but not in the PED file will be treated as affected females.</li>
+  <li>The BEAGLE markers file for the chromosome at hand, which typically includes four columns: physical position (chrom:position), map position (morgans), allele1, and allele2.</li>
+  <li>The BEAGLE FastIBD output file (*.fibd) for the chromosome in uncompressed format. It should have five columns: sample1, sample2, index1, index2, and score. The index fields correspond to the markers file; MendelScan will convert these to genomic coordinates and print them to the output file.</li>
+</ol>
+
+<p>MendelScan breaks the chromosome into windows of a user-specified resolution (default: 100,000 bp) and, for each window, determines the number of affected pairs that shared an IBD segment in that window. Typically, windows in which &gt;90% of possible affected pairs were IBD suggests a candidate haplotype. All windows are output to a second output file (if specified) or STDOUT.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Included in the repository is an example data set using <a href="http://www.1000genomes.org">1000 Genomes</a> data.  You extract that data and run the following example:</p>
+
+<pre class="terminal">
+$ tar -zxvf example_data.tar.gz
+$ cd example_data
+$ java -jar MendelScan.jar score variants.vcf \
+    --vep-file annotation.vep \
+    --ped-file family.ped \
+    --gene-file gene-expression.txt \
+    --output-file mendelscan.tsv \
+    --output-vcf mendelscan.vcf
+Reading input from variants.vcf
+Loading sample information from family.ped...
+1 males, 2 cases, 1 controls
+Loading gene expression information from gene-expression.txt...
+Expression rank loaded for 38545 genes
+Loading VEP from annotation.vep...
+11181 variants had VEP annotation
+Scoring variants under dominant disease model
+3 samples in VCF (2 affected, 1 unaffected, 1 male)
+11181 variants in VCF file
+11181 matched with VEP annotation
+12846   variants_common
+337 variants_known
+18  variants_mutation
+97  variants_novel
+1359    variants_rare
+466 variants_uncommon
+</pre>
+
+
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+        <a href="https://github.com/genome/mendelscan" class="btn_view_on_github">View on GitHub</a> <br/>
+      
+
+      
+        <a href="http://biostars.org/t/MendelScan" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.1">v1.2.1</a>
+      </li>
+    
+      <li>
+      <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.0">v1.2.0</a>
+      </li>
+    
+      <li>
+      <a href="https://github.com/genome/mendelscan/releases/tag/v1.1.1.0">v1.1.1.0</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

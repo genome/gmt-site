@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>JoinX ()</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/joinx/res/images/icon_48.png" width="48" height="48" alt="JoinX"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>JoinX <span class="version"></span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h2 id="build-instructions">Build instructions</h2>
+
+<h3 id="setup-repository">Setup repository</h3>
+<ul>
+  <li>Clone the git repository</li>
+  <li>Initialize submodules: <code>git submodule update --init</code></li>
+</ul>
+
+<h3 id="install-build-dependencies">Install build dependencies</h3>
+
+<p>Building requires:</p>
+
+<ul>
+  <li>gcc 4.4+ or clang 3.2+</li>
+  <li>cmake 2.8+</li>
+  <li>zlib development files (headers, libraries)</li>
+</ul>
+
+<p>Integration tests require:</p>
+
+<ul>
+  <li>Python</li>
+  <li>Valgrind (optional, but recommended)</li>
+</ul>
+
+<p>To install these on Ubuntu, try:</p>
+
+<p><code>sudo apt-get install cmake build-essential zlib1g-dev</code></p>
+
+<h3 id="build-test-and-install">Build, test, and install</h3>
+
+<p>Note: if using clang, export the environment variables CC=clang,
+CXX=clang++.</p>
+
+<p>Joinx does not support in source builds. Create a new build directory,
+enter it, and run:</p>
+
+<ul>
+  <li><code>cmake /path/to/joinx/repo [opts]</code>
+    <ul>
+      <li>Some useful options to cmake are:
+        <ul>
+          <li>-DBOOST_ROOT=/path/to/boost if boost is installed somewhere
+other than the default location</li>
+          <li>-DBoost_NO_SYSTEM_PATHS=on to skip checking system
+default locations for boost headers and libs</li>
+          <li>-DBoost_USE_STATIC_LIBS=on to link boost statically</li>
+          <li>-DCMAKE_INSTALL_PREFIX=/path change the installation
+location (default: /usr)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>make deps</code></li>
+  <li><code>make</code></li>
+  <li><code>ctest</code> (to run unit tests)</li>
+  <li><code>make install</code></li>
+</ul>
+
+<p>Running ctest with run both unit and integration tests. you can run one
+or the other with <code>ctest -L &lt;unit|integration&gt;</code></p>
+
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+        <a href="https://github.com/genome/joinx" class="btn_view_on_github">View on GitHub</a> <br/>
+      
+
+      
+        <a href="http://biostars.org/t/JoinX" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

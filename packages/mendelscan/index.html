@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>MendelScan (v1.2.1)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/mendelscan/res/images/icon_48.png" width="48" height="48" alt="MendelScan"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>MendelScan <span class="version">v1.2.1</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <h2 id="introduction">Introduction</h2>
+<hr />
+
+<p>MendelScan is a software package for analyzing targeted, whole-exome, or whole-genome sequencing data in family studies of inherited disease. Given the variant calls for a family (VCF file) and pedigree/phenotype information, MendelScan allows you to prioritize candidate variants based upon segregation, annotation, population frequency, and gene expression information. It also enables the mapping of disease genes using two novel algorithms: rare heterozygote rule out (RHRO) and shared identity-by-descent (SIBD).</p>
+
+<h2 id="how-to-cite">How to Cite</h2>
+<hr />
+
+<p>A manuscript describing MendelScan is currently under review. In the interim, please cite MendelScan by noting the version and citing http://gmt.genome.wustl.edu/mendelscan.</p>
+
+
+
+          </div>
+            
+            
+            <h2 style="margin: 1em 20px">Latest MendelScan News:</h2>
+            <hr/>
+            
+            
+            
+            
+            
+            
+            
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2014/03/10/mendelscan_v1.2.1_released.html">MendelScan v1.2.1</a></h2>
+  <div class="entry-date"><abbr title="March 10, 2014" class="published">March 10, 2014</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/mendelscan/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>This release is a minor fix to v1.2 and addresses a couple of VEP annotation (native output) format bugs. A secondary output file (.excluded) now lists variants excluded from the main output file due to lack of VEP annotation. Also, sites with 2+ alternate alleles will be reported in multiple lines (one per alternate allele) when VEP native output format is provided.</p>
+
+
+<p>You can <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.1">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+            
+            
+            
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2014/03/05/mendelscan_v1.2.0_released.html">MendelScan v1.2.0</a></h2>
+  <div class="entry-date"><abbr title="March 05, 2014" class="published">March 05, 2014</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/mendelscan/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>We fixed a bug related to segmentation scoring, added broader VEP output format compatibility, and enabled preliminary recessive scoring functionality for the “score” subcommand.</p>
+
+<p>If you use MendelScan to aid your research, please cite the publication:
+Koboldt DC, Larson DE, Sullivan LS, Bowne SJ, Steinberg KM, et al. Exome-based mapping and variant prioritization for inherited Mendelian disorders. Am J Hum Genet. doi:10.1016/j.ajhg.2014.01.016</p>
+
+
+<p>You can <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.0">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+            
+            
+            
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2013/10/23/mendelscan_v1.1.1.0_released.html">MendelScan v1.1.1</a></h2>
+  <div class="entry-date"><abbr title="October 23, 2013" class="published">October 23, 2013</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/mendelscan/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>This is the initial release of MendelScan, a software package for analyzing variants identified by family-based sequencing of rare genetic diseases. There are three main functions included with this release:</p>
+
+<p><code>java -jar MendelScan.jar score</code> – prioritize variants in a VCF based upon segregation, annotation, population frequency, and gene expression
+<code>java -jar MendelScan.jar rhro</code> – apply rare heterozygote rule out to map dominant disease genes 
+<code>java -jar MendelScan.jar sibd</code> – apply shared IBD analysis to map disease genes</p>
+
+<p>A manuscript describing this tool has been submitted; in the interim, please cite MendelScan by noting the version number and citing its home URL: http://gmt.genome.wustl.edu/mendelscan.</p>
+
+
+<p>You can <a href="https://github.com/genome/mendelscan/releases/tag/v1.1.1.0">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+        <a href="https://github.com/genome/mendelscan" class="btn_view_on_github">View on GitHub</a> <br/>
+      
+
+      
+        <a href="http://biostars.org/t/MendelScan" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.1">v1.2.1</a>
+      </li>
+    
+      <li>
+      <a href="https://github.com/genome/mendelscan/releases/tag/v1.2.0">v1.2.0</a>
+      </li>
+    
+      <li>
+      <a href="https://github.com/genome/mendelscan/releases/tag/v1.1.1.0">v1.1.1.0</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>
