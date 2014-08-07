@@ -9,8 +9,8 @@
     <link rel="shortcut icon" href="/gmt_favicon.png" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="content-language" content="en" />
-<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
-<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/reset.css?20140807100240" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140807100240" media="screen,print"/>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
@@ -132,7 +132,7 @@ make test
 
 <h3 id="i-get-errors-from-cmake-about-missing-modules-how-do-i-fix-this">I get errors from cmake about missing modules. How do I fix this?</h3>
 
-<p>As of commit <a href="https://github.com/genome/somatic-sniper/commit/09ef624e5bb275e0fd62396a14a878711e746cb9">09ef624</a> or version <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.4">1.0.4</a>, this should no longer be an issue and tarballs from github should function as intended. In earlier versions, SomaticSniper contained a git submodule called build-common. This submodule contains helper modules for cmake. If you downloaded the source as a tarball from github or forgot to do a recursive clone using git, then you will not have this submodule and will see cmake errors. If you are using git, we recommend you go back and use the –recursive option when cloning the SomaticSniper repository. If you cannot use git, follow the instructions below to remedy the situation.</p>
+<p>As of commit <a href="https://github.com/genome/somatic-sniper/commit/09ef624e5bb275e0fd62396a14a878711e746cb9">09ef624</a> or version <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.4">1.0.4</a>, this should no longer be an issue and tarballs from github should function as intended. In earlier versions, SomaticSniper contained a git submodule called build-common. This submodule contains helper modules for cmake. If you downloaded the source as a tarball from github or forgot to do a recursive clone using git, then you will not have this submodule and will see cmake errors. If you are using git, we recommend you go back and use the <code>--recursive</code> option when cloning the SomaticSniper repository. If you cannot use git, follow the instructions below to remedy the situation.</p>
 
 <ol>
   <li>Download the build-common module separately <a href="https://github.com/genome/build-common/tarball/master">here</a>.</li>

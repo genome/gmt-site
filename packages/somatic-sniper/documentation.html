@@ -9,8 +9,8 @@
     <link rel="shortcut icon" href="/gmt_favicon.png" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="content-language" content="en" />
-<link rel="stylesheet" href="/res/css/reset.css?20140729163800" media="screen,print"/>
-<link rel="stylesheet" href="/res/css/main_sub.css?20140729163800" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/reset.css?20140807100240" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140807100240" media="screen,print"/>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
@@ -78,14 +78,224 @@
 
           <h2></h2>
           <div class="rounded_bg">
-              <h2>Documentation</h2>
-<hr/>
+              <h2 id="somaticsniper-user-manual">SomaticSniper User Manual</h2>
 
-<ul>
-    <li><a href="sniper_manual.html">View online (html)</a></li>
-    <li><a href="sniper_manual.pdf">Download (pdf)</a></li>
-    <li><a href="sniper_manual.tex">Download (latex)</a></li>
-</ul>
+<p><strong>David E. Larson, Travis E. Abbott and Christopher C. Harris</strong></p>
+
+<p><strong>October 26, 2011</strong></p>
+
+<p>The purpose of this program is to identify single nucleotide positions that are diﬀerent between tumor and normal (or, in theory, any two bam ﬁles). It takes a tumor bam and a normal bam and compares the two to determine the diﬀerences. It outputs a ﬁle in a format very similar to Samtools consensus format. It uses the genotype likelihood model of MAQ (as implemented in Samtools) and then calculates the probability that the tumor and normal genotypes are diﬀerent. This probability is reported as a somatic score. The somatic score is the Phred-scaled probability (between 0 to 255) that the Tumor and Normal genotypes are not diﬀerent where 0 means there is no probability that the genotypes are diﬀerent and 255 means there is a probability of 1 − 10255∕−10 that the genotypes are diﬀerent between tumor and normal. This is consistent with how the SAM format reports such probabilities.</p>
+
+<p>There are two modes, the joint genotyping mode (-J) takes into account the fact that the tumor and normal samples are not entirely independent and also takes into account the prior probability of a somatic mutation. This probability can be scaled to control the sensitivity of the algorithm. An accurate value for this prior would be 0.000001, but this may result in a severe lack of sensitivity at lower depths. A less realistic prior probability will generate more sensitive results at the expense of an increase in the number of false positives. To get a similar sensitivity to the default mode, we recommend using a prior of 0.01. The default mode treats the two samples as if they came from two diﬀerent individuals. This mode uses a less accurate mathematical model, but yields good results, especially if the normal may contain some tumor cells or the tumor is quite impure.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p><code>bam-somaticsniper [options] -f &lt;ref.fasta&gt; &lt;tumor.bam&gt; &lt;normal.bam&gt; &lt;snv_output_ﬁle&gt;</code></p>
+
+<p><strong>Required Option:</strong></p>
+
+<p><code>-f   FILE REQUIRED reference sequence in the FASTA format</code></p>
+
+<p><strong>Options:</strong></p>
+
+<p><code>-q  INT ﬁltering reads with mapping quality less than INT [0]</code></p>
+
+<p><code>-Q  INT ﬁltering somatic snv output with somatic quality less than INT [15]</code></p>
+
+<p><code>-p  FLAG disable priors in the somatic calculation. Increases sensitivity for solid tumors.</code></p>
+
+<p><code>-J  FLAG Use prior probabilities accounting for the somatic mutation rate</code></p>
+
+<p><code>-s  FLOAT prior probability of a somatic mutation (implies -J) [0.01]</code></p>
+
+<p><code>-T  FLOAT theta in maq consensus calling model (for -c/-g) [0.850000]</code></p>
+
+<p><code>-N  INT number of haplotypes in the sample (for -c/-g) [2]</code></p>
+
+<p><code>-r  FLOAT prior of a diﬀerence between two haplotypes (for -c/-g) [0.001000]</code></p>
+
+<p><code>-F  STRING select output format (vcf or classic) [classic]</code></p>
+
+<h3 id="notes-on-running-somaticsniper">Notes on running SomaticSniper</h3>
+
+<p>Minimally, you must provide the program the reference fasta the bams were aligned against (passed with the -f option), a tumor bam, a normal bam, and the ﬁlename of the resulting output ﬁle. We recommend ﬁltering out reads with a mapping quality of 0 (i.e. use -q 1) as they are typically randomly placed in the genome. We have also found that few variants with a somatic score less than 15 validate, but you may decrease the minimum score or increase it to a higher threshold (eg -Q 40). To obtain high conﬁdence sites, we recommend also thresholding the minimum average mapping quality for the variant base to 40 for reads aligned with BWA or 70 for reads aligned with MAQ. We have not tested other aligners at this time. Disabling priors is not recommended, but may increase sensitivity at the cost of a decrease in speciﬁcity.</p>
+
+<p>Basic ﬁltering with provided Perl scripts</p>
+
+<p>A small number of basic Perl scripts are included in the SomaticSniper package (located in src/scripts of the source code release) to aid in ﬁltering out likely false positives. In order to get the recommended ﬁltering you should do the following. Defaults are set assuming that BWA short is the aligner used. Other aligners have not been tested and recommendations are not available. Before proceeding you will need to obtain and compile bam-readcount (https://github.com/genome/bam-readcount). You will also need to generate a samtools pileup (not mpileup) indel ﬁle. Handling of indel containing VCFs is not implemented.</p>
+
+<ol>
+  <li>
+    <p>Filter on standard ﬁlters using the indel ﬁle. This will also remove LOH calls e.g. perl snpﬁlter.pl –snp-ﬁle your_sniper_ﬁle –indel-ﬁle your_indel_pileup</p>
+  </li>
+  <li>
+    <p>Adapt the remainder for use with bam-readcount e.g. perl prepare_for_readcount.pl –snp-ﬁle your_sniper_ﬁle.SNPﬁlter</p>
+  </li>
+  <li>
+    <p>Run bam-readcount (I’d recommend using the same mapping quality -q setting as you ran </p>
+  </li>
+  <li>
+    <p>SomaticSniper with) e.g. bam-readcount -b 15 -f your_ref.fasta -l your_sniper_ﬁle.SNPﬁlter.pos your_tumor.bam &gt; your_readcounts.rc
+ Run the false positive ﬁlter e.g. perl fpﬁlter.pl –snp-ﬁle your_sniper_ﬁle.SNPﬁlter –readcount-ﬁle your_readcounts.rc</p>
+  </li>
+  <li>
+    <p>Lastly, run the “high conﬁdence” ﬁlter which ﬁlters based on the Somatic Score and mapping quality e.g. perl highconﬁdence.pl –snp-ﬁle your_sniper_ﬁle.SNPﬁlter.fp_pass</p>
+  </li>
+</ol>
+
+<p>Your ﬁnal set of high conﬁdence and highly ﬁltered indels is now in the ﬁle your_sniper_ﬁle.SNPﬁlter.fp_pass.hc</p>
+
+<h3 id="file-formats">File Formats</h3>
+
+<p>The output by SomaticSniper consists of line for all sites whose consensus diﬀers from the reference base. Each of the three available output formats is described below</p>
+
+<p><strong>Classic:</strong></p>
+
+<p>Each line contains the following tab-separated values:</p>
+
+<ol>
+  <li>Chromosome</li>
+  <li>Position</li>
+  <li>Reference base</li>
+  <li>IUB genotype of tumor</li>
+  <li>IUB genotype of normal</li>
+  <li>Somatic Score</li>
+  <li>Tumor Consensus quality</li>
+  <li>Tumor variant allele quality</li>
+  <li>Tumor mean mapping quality</li>
+  <li>Normal Consensus quality</li>
+  <li>Normal variant allele quality</li>
+  <li>Normal mean mapping quality</li>
+  <li>Depth in tumor (# of reads crossing the position)</li>
+  <li>Depth in normal (# of reads crossing the position)</li>
+  <li>Mean base quality of reads supporting reference in tumor</li>
+  <li>Mean mapping quality of reads supporting reference in tumor</li>
+  <li>Depth of reads supporting reference in tumor</li>
+  <li>Mean base quality of reads supporting variant(s) in tumor</li>
+  <li>Mean mapping quality of reads supporting variant(s) in tumor</li>
+  <li>Depth of reads supporting variant(s) in tumor</li>
+  <li>Mean base quality of reads supporting reference in normal</li>
+  <li>Mean mapping quality of reads supporting reference in normal</li>
+  <li>Depth of reads supporting reference in normal</li>
+  <li>Mean base quality of reads supporting variant(s) in normal</li>
+  <li>Mean mapping quality of reads supporting variant(s) in normal</li>
+  <li>Depth of reads supporting variant(s) in normal</li>
+</ol>
+
+<p><strong>VCF</strong></p>
+
+<p>VCF output from SomaticSniper conforms to version 4.1 of the VCF speciﬁcation. Hence, each non-header output line contains the following ﬁelds:</p>
+
+<ol>
+  <li>Chromosome</li>
+  <li>Position</li>
+  <li>ID (unused)</li>
+  <li>Reference base</li>
+  <li>Alternate bases (comma separated)</li>
+  <li>Quality (unused)</li>
+  <li>Filters (unused)</li>
+  <li>INFO (unused)</li>
+  <li>FORMAT speciﬁcation for each sample</li>
+  <li>NORMAL sample data</li>
+  <li>TUMOR sample data</li>
+</ol>
+
+<p>The following FORMAT ﬁelds will be populated for each of NORMAL and TUMOR.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Number</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GT</td>
+      <td>1</td>
+      <td>String</td>
+      <td>Genotype</td>
+    </tr>
+    <tr>
+      <td>IGT</td>
+      <td>1</td>
+      <td>String</td>
+      <td>Genotype when called independently (only ﬁlled if called in joint prior mode)</td>
+    </tr>
+    <tr>
+      <td>DP</td>
+      <td>1</td>
+      <td>Integer</td>
+      <td>Total read depth</td>
+    </tr>
+    <tr>
+      <td>DP4</td>
+      <td>4</td>
+      <td>Integer</td>
+      <td>Number of high-quality ref-forward bases, ref-reverse, alt-forward and alt-reverse bases</td>
+    </tr>
+    <tr>
+      <td>BCOUNT</td>
+      <td>4</td>
+      <td>Integer</td>
+      <td>Occurrence count for each base at this site (A,C,G,T)</td>
+    </tr>
+    <tr>
+      <td>GQ</td>
+      <td>1</td>
+      <td>Integer</td>
+      <td>Genotype quality</td>
+    </tr>
+    <tr>
+      <td>JGQ</td>
+      <td>1</td>
+      <td>Integer</td>
+      <td>Joint genotype quality (only ﬁlled if called in joint prior mode)</td>
+    </tr>
+    <tr>
+      <td>VAQ</td>
+      <td>1</td>
+      <td>Integer</td>
+      <td>Variant quality</td>
+    </tr>
+    <tr>
+      <td>BQ</td>
+      <td>.</td>
+      <td>Integer</td>
+      <td>Average base quality of each base in the call, reported in alphabetical order (A,C,G,T)</td>
+    </tr>
+    <tr>
+      <td>MQ</td>
+      <td>1</td>
+      <td>Integer</td>
+      <td>Average mapping quality across all reads.</td>
+    </tr>
+    <tr>
+      <td>AMQ</td>
+      <td>.</td>
+      <td>Integer</td>
+      <td>Average mapping quality of each base in the call, reported in alphabetical order (A,C,G,T)</td>
+    </tr>
+    <tr>
+      <td>SS</td>
+      <td>1</td>
+      <td>Integer</td>
+      <td>Variant status relative to non-adjacent normal: 0=wildtype, 1=germline, 2=somatic, 3=LOH, 4=unknown</td>
+    </tr>
+    <tr>
+      <td>SSC</td>
+      <td>1</td>
+      <td>Integer</td>
+      <td>Somatic Score</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="user-support">User Support</h3>
+
+<p>Please ﬁrst search Biostar (http://www.biostars.org) and then ask a question there if needed. We automatically monitor Biostar for questions related to our tools. </p>
 
 
 
