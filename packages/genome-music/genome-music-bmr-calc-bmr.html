@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140813143935" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140813143935" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <div class="doc_nav_path">
+  <p>
+  <a href="#">genome</a> ::
+  <a href="/packages/genome-music/documentation.html">music</a> ::
+  <a href="/packages/genome-music/genome-music-bmr.html">bmr</a> ::
+  <span class="last">calc-bmr</span>
+  </p>
+</div>
+
+<h1><a name="___top"></a>
+<p>genome music bmr calc-bmr</p>
+</h1>
+
+<ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">REQUIRED ARGUMENTS</a></li>
+<li><a href="#___sec4">OPTIONAL ARGUMENTS</a></li>
+<li><a href="#___sec5">DESCRIPTION</a></li>
+<li><a href="#___sec6">ARGUMENTS</a></li>
+<li><a href="#___sec7">LICENSE</a></li>
+<li><a href="#___sec8">AUTHORS</a></li>
+<li><a href="#___sec9">SEE ALSO</a></li></ul>
+
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
+
+<p>genome music bmr calc-bmr - Calculates mutation rates given per-gene coverage (from &#34;music bmr calc-covg&#34;),
+and a mutation list</p>
+<br/>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
+
+<p>This document describes genome music bmr calc-bmr version 0.0401 (2014-02-13 at 08:01:08)</p>
+<br/>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music bmr calc-bmr --bmr-output=?
+--roi-file=?
+--gene-mr-file=?
+--reference-sequence=?
+--bam-list=?
+--output-dir=?
+--maf-file=?
+[--skip-non-coding] [--skip-silent] [--bmr-groups=?] [--show-skipped] [--separate-truncations] [--merge-concurrent-muts] [--genes-to-ignore=?]</p>
+
+<pre> ... music bmr calc-bmr \
+    --bam-list input_dir/bam_list \
+    --maf-file input_dir/myMAF.tsv \
+    --output-dir output_dir/ \
+    --reference-sequence input_dir/all_sequences.fa \
+    --roi-file input_dir/all_coding_exons.tsv
+
+ ... music bmr calc-bmr \
+    --bam-list input_dir/bam_list \
+    --maf-file input_dir/myMAF.tsv \
+    --output-dir output_dir/ \
+    --reference-sequence input_dir/all_sequences.fa \
+    --roi-file input_dir/all_coding_exons.tsv \
+    --genes-to-ignore GENE1,GENE2</pre>
+<br/>
+<h1><a name="___sec3" href="#___top">REQUIRED ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="bmr-output_Number"
+>bmr-output <i>Number</i></a></dt>
+
+<dd>
+<p>TODO</p>
+
+<dt><a name="roi-file_Text"
+>roi-file <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited list of ROIs [chr start stop gene_name] (See DESCRIPTION)</p>
+
+<dt><a name="gene-mr-file_Text"
+>gene-mr-file <i>Text</i></a></dt>
+
+<dd>
+<p>TODO</p>
+
+<dt><a name="reference-sequence_Text"
+>reference-sequence <i>Text</i></a></dt>
+
+<dd>
+<p>Path to reference sequence in FASTA format</p>
+
+<dt><a name="bam-list_Text"
+>bam-list <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited list of BAM files [sample_name normal_bam tumor_bam] (See DESCRIPTION)</p>
+
+<dt><a name="output-dir_Text"
+>output-dir <i>Text</i></a></dt>
+
+<dd>
+<p>Directory where output files will be written (Use the same one used with calc-covg)</p>
+
+<dt><a name="maf-file_Text"
+>maf-file <i>Text</i></a></dt>
+
+<dd>
+<p>List of mutations using TCGA MAF specification v2.3</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec4" href="#___top">OPTIONAL ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="skip-non-coding_Boolean"
+>skip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip non-coding mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-non-coding_Boolean"
+>noskip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-non-coding &#39;false&#39;</p>
+
+<dt><a name="skip-silent_Boolean"
+>skip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip silent mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-silent_Boolean"
+>noskip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-silent &#39;false&#39;</p>
+
+<dt><a name="bmr-groups_Integer"
+>bmr-groups <i>Integer</i></a></dt>
+
+<dd>
+<p>Number of clusters of samples with comparable BMRs (See DESCRIPTION)</p>
+
+<p>Default value &#39;1&#39; if not specified</p>
+
+<dt><a name="show-skipped_Boolean"
+>show-skipped <i>Boolean</i></a></dt>
+
+<dd>
+<p>Report each skipped mutation,
+not just how many</p>
+
+<p>Default value &#39;false&#39; (--noshow-skipped) if not specified</p>
+
+<dt><a name="noshow-skipped_Boolean"
+>noshow-skipped <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make show-skipped &#39;false&#39;</p>
+
+<dt><a name="separate-truncations_Boolean"
+>separate-truncations <i>Boolean</i></a></dt>
+
+<dd>
+<p>Group truncational mutations as a separate category</p>
+
+<p>Default value &#39;false&#39; (--noseparate-truncations) if not specified</p>
+
+<dt><a name="noseparate-truncations_Boolean"
+>noseparate-truncations <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make separate-truncations &#39;false&#39;</p>
+
+<dt><a name="merge-concurrent-muts_Boolean"
+>merge-concurrent-muts <i>Boolean</i></a></dt>
+
+<dd>
+<p>Multiple mutations of a gene in the same sample are treated as 1</p>
+
+<p>Default value &#39;false&#39; (--nomerge-concurrent-muts) if not specified</p>
+
+<dt><a name="nomerge-concurrent-muts_Boolean"
+>nomerge-concurrent-muts <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make merge-concurrent-muts &#39;false&#39;</p>
+
+<dt><a name="genes-to-ignore_Text"
+>genes-to-ignore <i>Text</i></a></dt>
+
+<dd>
+<p>Comma-delimited list of genes to ignore for background mutation rates</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec5" href="#___top">DESCRIPTION</a></h1>
+
+<p>Given a mutation list (MAF),
+and per-gene coverage data calculated using &#34;music bmr calc-covg&#34;),
+this script calculates overall Background Mutation Rate (BMR) and BMRs in the categories of AT/CG/CpG Transitions,
+AT/CG/CpG Transversions,
+and Indels.
+An optional category for truncational mutations can also be specified.
+The script generates a file with per-gene mutation rates that can be used with the tool that tests for significantly mutated genes (music smg).</p>
+<br/>
+<h1><a name="___sec6" href="#___top">ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="--roi-file"
+>--roi-file</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>The regions of interest (ROIs) of each gene are typically regions targeted for sequencing or are merged exon loci (from multiple transcripts) of genes with 2-bp flanks (splice junctions).
+ROIs from the same chromosome must be listed adjacent to each other in this file.
+This allows the underlying C-based code to run much more efficiently and avoid re-counting bases seen in overlapping ROIs (for overall covered base counts).
+For per-gene base counts,
+an overlapping base will be counted each time it appears in an ROI of the same gene.
+To avoid this,
+be sure to merge together overlapping ROIs of the same gene.
+BEDtools&#39; mergeBed can help if used per gene.</a></dt>
+</dl>
+
+<dt><a name="--reference-sequence"
+>--reference-sequence</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>The reference sequence in FASTA format.
+If a reference sequence index is not found next to this file (a .fai file),
+it will be created.</a></dt>
+</dl>
+
+<dt><a name="--bam-list"
+>--bam-list</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>Provide a file containing sample names and normal/tumor BAM locations for each.
+Use the tab- delimited format [sample_name normal_bam tumor_bam] per line.
+Additional columns like clinical data are allowed,
+but ignored.
+The sample_name must be the same as the tumor sample names used in the MAF file (16th column,
+with the header Tumor_Sample_Barcode).</a></dt>
+</dl>
+
+<dt><a name="--bmr-groups"
+>--bmr-groups</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>Ideally,
+we want to test the mutation rate (MR) of a gene in a sample against the background mutation rate (BMR) across that sample.
+But if the BMRs of some samples are comparable,
+we can instead test the MR of a gene across a group of samples with comparable BMR,
+against the overall BMR of that group.
+This argument specifies how many such groups you want to cluster samples into.
+By default,
+it is assumed that all samples have comparable BMRs (bmr-groups = 1).</a></dt>
+</dl>
+
+<dt><a name="--output-dir"
+>--output-dir</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>This should be the same output directory used when running &#34;music bmr calc-covg&#34;.
+The following outputs of this script will also be created/written: overall_bmrs: File containing categorized overall background mutation rates.
+gene_mrs: File containing categorized per-gene mutation rates.</a></dt>
+</dl>
+
+<dt><a name="--genes-to-ignore"
+>--genes-to-ignore</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>A comma-delimited list of genes to ignore for overall BMR calculations.
+List genes that are known factors in this disease and whose mutations should not be classified as background.</a></dt>
+</dl>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec7" href="#___top">LICENSE</a></h1>
+
+<p>Copyright (C) 2010-2011 Washington University in St.
+Louis.</p>
+
+<p>It is released under the Lesser GNU Public License (LGPL) version 3.
+See the associated LICENSE file in this distribution.</p>
+<br/>
+<h1><a name="___sec8" href="#___top">AUTHORS</a></h1>
+
+<pre> Cyriac Kandoth, Ph.D.</pre>
+<br/>
+<h1><a name="___sec9" href="#___top">SEE ALSO</a></h1>
+
+<p><b>genome-music-bmr</b>(1),
+<b>genome-music</b>(1),
+<b>genome</b>(1)</p>
+<br/>
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

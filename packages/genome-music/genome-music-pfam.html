@@ -78,40 +78,113 @@
 
           <h2></h2>
           <div class="rounded_bg">
-              <h2>64-bit Ubuntu 10.04</h2>
-<hr>
-<p>Before you install software from this site on your computer, you must first run the command below.  This command adds our software repository to the package management system’s configuration on your computer.  You only need to run this command once, so if you have already installed software from this site on your computer, you don’t need to do this part again (although it won’t hurt if you do). Simply run the command below to configure your computer to install software from this site.</p>
+              <div class="doc_nav_path">
+  <p>
+  <a href="#">genome</a> ::
+  <a href="/packages/genome-music/documentation.html">music</a> ::
+  <span class="last">pfam</span>
+  </p>
+</div>
+<h1><a name="___top"></a>
+<p>genome music pfam</p>
+</h1>
 
-<pre class="terminal">wget -q -O - https://apt.genome.wustl.edu/ubuntu/files/install.sh | sudo bash</pre>
-<p>To install Genome MuSiC, run:</p>
-<p class="terminal">sudo genome install genome-music</p>
-<h3>Behind the Scenes:</h3>
-<p>If you’d prefer to configure your system manually or are uncomfortable running a script downloaded from the web, you can follow the instructions below rather than the simple commands above.</p>
-<h4>Repository Linking:</h4>
-<p>The Genome Modeling System uses Ubuntu’s native package management system, <a href="http://wiki.debian.org/Apt"><span class="caps">APT</span></a>, leveraging our package repository at apt.genome.wustl.edu. To configure <span class="caps">APT</span> on your computer to be able to install software from our package repositry, run the following commands.</p>
+<ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">REQUIRED ARGUMENTS</a></li>
+<li><a href="#___sec4">DESCRIPTION</a></li>
+<li><a href="#___sec5">LICENSE</a></li>
+<li><a href="#___sec6">AUTHORS</a></li>
+<li><a href="#___sec7">CREDITS</a></li>
+<li><a href="#___sec8">SEE ALSO</a></li></ul>
 
-<pre class="terminal">sudo apt-add-repository "deb http://apt.genome.wustl.edu/ubuntu lucid-genome main"
-wget https://apt.genome.wustl.edu/ubuntu/files/genome-institute.asc
-sudo apt-key add genome-institute.asc
-sudo apt-get update</pre>
-<p>The above commands only need to be run once on each computer on which you want to install our software, i.e., you only need to add our repository to APT’s configuration once.</p>
-<h4>Install Genome MuSiC:</h4>
-<p>Once your computer has been configured to install software from our package repository, simply run the command below to install Genome MuSiC.</p>
-<p class="terminal">sudo apt-get install genome-music</p>
-<h2>Usage:</h2>
-<hr>
-<p>
-To get help on , MuSiC use the -h option, e.g.:
-</p>
-<p class="terminal">
-genome music -h
-</p>
-<h2>Manuals:</h2>
-<hr>
-<p>To see the manual page:</p>
-<p class="terminal">man genome music</p>
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
 
+<p>genome music pfam - Add Pfam annotation to a MAF file</p>
+<br/>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
 
+<p>This document describes genome music pfam version 0.0401 (2014-02-13 at 08:01:08)</p>
+<br/>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music pfam --maf-file=?
+--output-file=?
+--reference-build=?</p>
+
+<pre> ... music pfam \
+        --maf-file myMAF.tsv \
+        --output-file myMAF.tsv.pfam</pre>
+<br/>
+<h1><a name="___sec3" href="#___top">REQUIRED ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="maf-file_Text"
+>maf-file <i>Text</i></a></dt>
+
+<dd>
+<p>List of mutations using TCGA MAF specification v2.3</p>
+
+<dt><a name="output-file_Text"
+>output-file <i>Text</i></a></dt>
+
+<dd>
+<p>Output MAF file with an extra column that reports Pfam annotation domains</p>
+
+<dt><a name="reference-build_Text"
+>reference-build <i>Text</i></a></dt>
+
+<dd>
+<p>Options are &#39;Build36&#39; or &#39;Build37&#39;.
+This parameter ensures appropriate annotation of domains valid values: Build36 Build37</p>
+
+<p>Default value &#39;Build37&#39; if not specified</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec4" href="#___top">DESCRIPTION</a></h1>
+
+<p>This command adds Pfam Domains to a column at the end of a MAF file.</p>
+
+<p>This tool takes a MAF file,
+determines the location of each variant therein,
+and then uses a fast-lookup to retrieve all of the Pfam annotation domains that the variant crosses.
+A column is appended to the end of the input MAF file called &#34;Pfam_Annotation_Domains&#34; where the results are listed.
+&#34;NA&#34; is listed if no Pfam domains are found.</p>
+<br/>
+<h1><a name="___sec5" href="#___top">LICENSE</a></h1>
+
+<p>Copyright (C) 2010-2011 Washington University in St.
+Louis.</p>
+
+<p>It is released under the Lesser GNU Public License (LGPL) version 3.
+See the associated LICENSE file in this distribution.</p>
+<br/>
+<h1><a name="___sec6" href="#___top">AUTHORS</a></h1>
+
+<pre> Nathan D. Dees, Ph.D.</pre>
+<br/>
+<h1><a name="___sec7" href="#___top">CREDITS</a></h1>
+
+<p>This tool uses tabix,
+by Heng Li.
+See http://samtools.sourceforge.net/tabix.shtml.</p>
+
+<p>This tool also depends on copies of data from the following databases,
+packaged in a form useable for quick analysis:</p>
+
+<pre> * Pfam - http://pfam.sanger.ac.uk/
+ * SMART - http://smart.embl-heidelberg.de/
+ * SUPERFAMILY - http://supfam.cs.bris.ac.uk/SUPERFAMILY/
+ * PatternScan - http://www.expasy.ch/prosite/</pre>
+<br/>
+<h1><a name="___sec8" href="#___top">SEE ALSO</a></h1>
+
+<p><b>genome-music</b>(1),
+<b>genome</b>(1)</p>
+<br/>
 
           </div>
             

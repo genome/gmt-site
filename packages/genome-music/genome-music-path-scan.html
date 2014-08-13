@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140813143935" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140813143935" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <div class="doc_nav_path">
+  <p>
+  <a href="#">genome</a> ::
+  <a href="/packages/genome-music/documentation.html">music</a> ::
+  <span class="last">path-scan</span>
+  </p>
+</div>
+<h1><a name="___top"></a>
+<p>genome music path-scan</p>
+</h1>
+
+<ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">REQUIRED ARGUMENTS</a></li>
+<li><a href="#___sec4">OPTIONAL ARGUMENTS</a></li>
+<li><a href="#___sec5">DESCRIPTION</a></li>
+<li><a href="#___sec6">ARGUMENTS</a></li>
+<li><a href="#___sec7">AUTHORS</a></li>
+<li><a href="#___sec8">CREDITS</a></li></ul>
+
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
+
+<p>genome music path-scan - Find signifcantly mutated pathways in a cohort given a list of somatic mutations.</p>
+<br/>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
+
+<p>This document describes genome music path-scan version 0.0401 (2014-02-13 at 08:01:08)</p>
+<br/>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music path-scan --gene-covg-dir=?
+--bam-list=?
+--pathway-file=?
+--maf-file=?
+--output-file=?
+[--bmr=?] [--genes-to-ignore=?] [--min-mut-genes-per-path=?] [--skip-non-coding] [--skip-silent]</p>
+
+<pre> ... music path-scan \
+        --bam-list input_dir/bam_file_list \
+        --gene-covg-dir output_dir/gene_covgs/ \
+        --maf-file input_dir/myMAF.tsv \
+        --output-file output_dir/sm_pathways \
+        --pathway-file input_dir/pathway_dbs/KEGG.txt \
+        --bmr 8.7E-07</pre>
+<br/>
+<h1><a name="___sec3" href="#___top">REQUIRED ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="gene-covg-dir_Text"
+>gene-covg-dir <i>Text</i></a></dt>
+
+<dd>
+<p>Directory containing per-gene coverage files (Created using music bmr calc-covg)</p>
+
+<dt><a name="bam-list_Text"
+>bam-list <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited list of BAM files [sample_name,
+normal_bam,
+tumor_bam] (See Description)</p>
+
+<dt><a name="pathway-file_Text"
+>pathway-file <i>Text</i></a></dt>
+
+<dd>
+<p>Tab-delimited file of pathway information (See Description)</p>
+
+<dt><a name="maf-file_Text"
+>maf-file <i>Text</i></a></dt>
+
+<dd>
+<p>List of mutations using TCGA MAF specifications v2.3</p>
+
+<dt><a name="output-file_Text"
+>output-file <i>Text</i></a></dt>
+
+<dd>
+<p>Output file that will list the significant pathways and their p-values</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec4" href="#___top">OPTIONAL ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="bmr_Number"
+>bmr <i>Number</i></a></dt>
+
+<dd>
+<p>Background mutation rate in the targeted regions</p>
+
+<p>Default value &#39;1e-06&#39; if not specified</p>
+
+<dt><a name="genes-to-ignore_Text"
+>genes-to-ignore <i>Text</i></a></dt>
+
+<dd>
+<p>Comma-delimited list of genes whose mutations should be ignored</p>
+
+<dt><a name="min-mut-genes-per-path_Number"
+>min-mut-genes-per-path <i>Number</i></a></dt>
+
+<dd>
+<p>Pathways with fewer mutated genes than this,
+will be ignored</p>
+
+<p>Default value &#39;1&#39; if not specified</p>
+
+<dt><a name="skip-non-coding_Boolean"
+>skip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip non-coding mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-non-coding_Boolean"
+>noskip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-non-coding &#39;false&#39;</p>
+
+<dt><a name="skip-silent_Boolean"
+>skip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip silent mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-silent_Boolean"
+>noskip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-silent &#39;false&#39;</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec5" href="#___top">DESCRIPTION</a></h1>
+
+<p>Only the following four columns in the MAF are used.
+All other columns may be left blank.</p>
+
+<pre> Col 1: Hugo_Symbol (Need not be HUGO, but must match gene names used in the pathway file)
+ Col 2: Entrez_Gene_Id (Matching Entrez ID trump gene name matches between pathway file and MAF)
+ Col 9: Variant_Classification
+ Col 16: Tumor_Sample_Barcode (Must match the name in sample-list, or contain it as a substring)</pre>
+
+<p>The Entrez_Gene_Id can also be left blank (or set to 0), but it is highly recommended, in case genes are named differently in the pathway file and the MAF file.</p>
+<br/>
+<h1><a name="___sec6" href="#___top">ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="--pathway-file"
+>--pathway-file</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>This is a tab-delimited file prepared from a pathway database (such as KEGG),
+with the columns: [path_id,
+path_name,
+class,
+gene_line,
+diseases,
+drugs,
+description] The latter three columns are optional (but are available on KEGG).
+The gene_line contains the &#34;entrez_id:gene_name&#34; of all genes involved in this pathway,
+each separated by a &#34;|&#34; symbol.</a></dt>
+
+<dd>
+<p>For example,
+a line in the pathway-file would look like:</p>
+
+<pre>  hsa00061    Fatty acid biosynthesis    Lipid Metabolism    31:ACACA|32:ACACB|27349:MCAT|2194:FASN|54995:OXSM|55301:OLAH</pre>
+
+<p>Ensure that the gene names and entrez IDs used match those used in the MAF file. Entrez IDs are not mandatory (use a 0 if Entrez ID unknown). But if a gene name in the MAF does not match any gene name in this file, the entrez IDs are used to find a match (unless it&#39;s a 0).</p>
+</dd>
+</dl>
+
+<dt><a name="--gene-covg-dir"
+>--gene-covg-dir</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>This is usually the gene_covgs subdirectory created when you run &#34;music bmr calc-covg&#34;. It should contain files for each sample that report per-gene covered base counts.</a></dt>
+</dl>
+
+<dt><a name="--bam-list"
+>--bam-list</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>Provide a file containing sample names and normal/tumor BAM locations for each. Use the tab- delimited format [sample_name normal_bam tumor_bam] per line. This tool only needs sample_name, so all other columns can be skipped. The sample_name must be the same as the tumor sample names used in the MAF file (16th column, with the header Tumor_Sample_Barcode).</a></dt>
+</dl>
+
+<dt><a name="--bmr"
+>--bmr</a></dt>
+
+<dd>
+<dl>
+<dt><a name="The_overall_background_mutation_rate._This_can_be_calculated_using_&#34;music_bmr_calc-bmr&#34;."
+>The overall background mutation rate. This can be calculated using &#34;music bmr calc-bmr&#34;.</a></dt>
+</dl>
+
+<dt><a name="--genes-to-ignore"
+>--genes-to-ignore</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>A comma-delimited list of genes to ignore from the MAF file. This is useful when there are recurrently mutated genes like TP53 which might mask the significance of other genes.</a></dt>
+</dl>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec7" href="#___top">AUTHORS</a></h1>
+
+<pre> Michael Wendl, Ph.D.</pre>
+<br/>
+<h1><a name="___sec8" href="#___top">CREDITS</a></h1>
+
+<p>This module uses reformatted copies of data from the Kyoto Encyclopedia of Genes and Genomes (KEGG) database:</p>
+
+<pre> * KEGG - http://www.genome.jp/kegg/</pre>
+<br/>
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

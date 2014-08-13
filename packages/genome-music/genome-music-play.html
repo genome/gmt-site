@@ -1,0 +1,569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140813143935" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140813143935" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <div class="doc_nav_path">
+  <p>
+  <a href="#">genome</a> ::
+  <a href="/packages/genome-music/documentation.html">music</a> ::
+  <span class="last">play</span>
+  </p>
+</div>
+<h1><a name="___top"></a>
+<p>genome music play</p>
+</h1>
+
+<ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">REQUIRED ARGUMENTS</a></li>
+<li><a href="#___sec4">OPTIONAL ARGUMENTS</a></li>
+<li><a href="#___sec5">DESCRIPTION</a></li>
+<li><a href="#___sec6">AUTHORS</a></li>
+<li><a href="#___sec7">CREDITS</a></li>
+<li><a href="#___sec8">SEE ALSO</a></li></ul>
+
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
+
+<p>genome music play - Run the full suite of MuSiC tools sequentially.</p>
+<br/>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
+
+<p>This document describes genome music play version 0.0401 (2014-02-13 at 08:01:08)</p>
+<br/>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music play --bam-list=?
+--roi-file=?
+--reference-sequence=?
+--output-dir=?
+--maf-file=?
+--pathway-file=?
+[--numeric-clinical-data-file=?] [--categorical-clinical-data-file=?] [--mutation-matrix-file=?] [--permutations=?] [--normal-min-depth=?] [--tumor-min-depth=?] [--min-mapq=?] [--show-skipped] [--genes-to-ignore=?] [--bmr=?] [--max-proximity=?] [--bmr-modifier-file=?] [--numerical-data-test-method=?] [--skip-low-mr-genes] [--max-fdr=?] [--genetic-data-type=?] [--wu-annotation-headers] [--bmr-groups=?] [--separate-truncations] [--merge-concurrent-muts] [--skip-non-coding] [--skip-silent] [--min-mut-genes-per-path=?] [--glm-model-file=?] [--processors=?] [--aa-range=?] [--nuc-range=?] [--reference-build=?] [--show-known-hits] [--glm-clinical-data-file=?] [--use-maf-in-glm] [--omimaa-dir=?] [--cosmic-dir=?] [--verbose] [--clinical-correlation-matrix-file=?]</p>
+
+<p>This tool takes as parameters all the information required to run the individual tools.
+An example usage is:</p>
+
+<pre> ... music play \
+        --bam-list input/bams_to_analyze.txt \
+        --numeric-clinical-data-file input/numeric_clinical_data.csv \
+        --maf-file input/myMAF.tsv \
+        --output-dir play_output_dir \
+        --pathway-file input/pathway_db \
+        --reference-sequence input/refseq/all_sequences.fa \
+        --roi-file input/all_coding_regions.bed \
+        --genetic-data-type gene</pre>
+<br/>
+<h1><a name="___sec3" href="#___top">REQUIRED ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="bam-list_Text"
+>bam-list <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited list of BAM files [sample_name normal_bam tumor_bam]</p>
+
+<dt><a name="roi-file_Text"
+>roi-file <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited list of ROIs [chr start stop gene_name]</p>
+
+<dt><a name="reference-sequence_Text"
+>reference-sequence <i>Text</i></a></dt>
+
+<dd>
+<p>Path to reference sequence in FASTA format</p>
+
+<dt><a name="output-dir_Text"
+>output-dir <i>Text</i></a></dt>
+
+<dd>
+<p>Directory where output files and subdirectories will be written</p>
+
+<dt><a name="maf-file_Text"
+>maf-file <i>Text</i></a></dt>
+
+<dd>
+<p>List of mutations using TCGA MAF specifications v2.3</p>
+
+<dt><a name="pathway-file_Text"
+>pathway-file <i>Text</i></a></dt>
+
+<dd>
+<p>Tab-delimited file of pathway information</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec4" href="#___top">OPTIONAL ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="numeric-clinical-data-file_Text"
+>numeric-clinical-data-file <i>Text</i></a></dt>
+
+<dd>
+<p>Table of samples (y) vs.
+numeric clinical data category (x)</p>
+
+<dt><a name="categorical-clinical-data-file_Text"
+>categorical-clinical-data-file <i>Text</i></a></dt>
+
+<dd>
+<p>Table of samples (y) vs.
+categorical clinical data category (x)</p>
+
+<dt><a name="mutation-matrix-file_Text"
+>mutation-matrix-file <i>Text</i></a></dt>
+
+<dd>
+<p>Optionally store the sample-vs-gene matrix used during calculations.</p>
+
+<dt><a name="permutations_Number"
+>permutations <i>Number</i></a></dt>
+
+<dd>
+<p>Number of permutations used to determine P-values</p>
+
+<dt><a name="normal-min-depth_Integer"
+>normal-min-depth <i>Integer</i></a></dt>
+
+<dd>
+<p>The minimum read depth to consider a Normal BAM base as covered</p>
+
+<dt><a name="tumor-min-depth_Integer"
+>tumor-min-depth <i>Integer</i></a></dt>
+
+<dd>
+<p>The minimum read depth to consider a Tumor BAM base as covered</p>
+
+<dt><a name="min-mapq_Integer"
+>min-mapq <i>Integer</i></a></dt>
+
+<dd>
+<p>The minimum mapping quality of reads to consider towards read depth counts</p>
+
+<dt><a name="show-skipped_Boolean"
+>show-skipped <i>Boolean</i></a></dt>
+
+<dd>
+<p>Report each skipped mutation,
+not just how many</p>
+
+<p>Default value &#39;false&#39; (--noshow-skipped) if not specified</p>
+
+<dt><a name="noshow-skipped_Boolean"
+>noshow-skipped <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make show-skipped &#39;false&#39;</p>
+
+<dt><a name="genes-to-ignore_Text"
+>genes-to-ignore <i>Text</i></a></dt>
+
+<dd>
+<p>Comma-delimited list of genes to ignore for background mutation rates</p>
+
+<dt><a name="bmr_Number"
+>bmr <i>Number</i></a></dt>
+
+<dd>
+<p>Background mutation rate in the targeted regions</p>
+
+<dt><a name="max-proximity_Text"
+>max-proximity <i>Text</i></a></dt>
+
+<dd>
+<p>Maximum AA distance between 2 mutations</p>
+
+<dt><a name="bmr-modifier-file_Text"
+>bmr-modifier-file <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited list of values per gene that modify BMR before testing [gene_name bmr_modifier]</p>
+
+<dt><a name="numerical-data-test-method_Text"
+>numerical-data-test-method <i>Text</i></a></dt>
+
+<dd>
+<p>Either &#39;cor&#39; for Pearson Correlation or &#39;wilcox&#39; for the Wilcoxon Rank-Sum Test for numerical clinical data.</p>
+
+<p>Default value &#39;cor&#39; if not specified</p>
+
+<dt><a name="skip-low-mr-genes_Boolean"
+>skip-low-mr-genes <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip testing genes with MRs lower than the background MR</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-low-mr-genes_Boolean"
+>noskip-low-mr-genes <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-low-mr-genes &#39;false&#39;</p>
+
+<dt><a name="max-fdr_Number"
+>max-fdr <i>Number</i></a></dt>
+
+<dd>
+<p>The maximum allowed false discovery rate for a gene to be considered an SMG</p>
+
+<p>Default value &#39;0.2&#39; if not specified</p>
+
+<dt><a name="genetic-data-type_Text"
+>genetic-data-type <i>Text</i></a></dt>
+
+<dd>
+<p>Data in matrix file must be either &#34;gene&#34; or &#34;variant&#34; type data</p>
+
+<dt><a name="wu-annotation-headers_Boolean"
+>wu-annotation-headers <i>Boolean</i></a></dt>
+
+<dd>
+<p>Use this to default to wustl annotation format headers</p>
+
+<dt><a name="nowu-annotation-headers_Boolean"
+>nowu-annotation-headers <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make wu-annotation-headers &#39;false&#39;</p>
+
+<dt><a name="bmr-groups_Integer"
+>bmr-groups <i>Integer</i></a></dt>
+
+<dd>
+<p>Number of clusters of samples with comparable BMRs</p>
+
+<p>Default value &#39;1&#39; if not specified</p>
+
+<dt><a name="separate-truncations_Boolean"
+>separate-truncations <i>Boolean</i></a></dt>
+
+<dd>
+<p>Group truncational mutations as a separate category</p>
+
+<p>Default value &#39;false&#39; (--noseparate-truncations) if not specified</p>
+
+<dt><a name="noseparate-truncations_Boolean"
+>noseparate-truncations <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make separate-truncations &#39;false&#39;</p>
+
+<dt><a name="merge-concurrent-muts_Boolean"
+>merge-concurrent-muts <i>Boolean</i></a></dt>
+
+<dd>
+<p>Multiple mutations of a gene in the same sample are treated as 1</p>
+
+<p>Default value &#39;false&#39; (--nomerge-concurrent-muts) if not specified</p>
+
+<dt><a name="nomerge-concurrent-muts_Boolean"
+>nomerge-concurrent-muts <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make merge-concurrent-muts &#39;false&#39;</p>
+
+<dt><a name="skip-non-coding_Boolean"
+>skip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip non-coding mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-non-coding_Boolean"
+>noskip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-non-coding &#39;false&#39;</p>
+
+<dt><a name="skip-silent_Boolean"
+>skip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip silent mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-silent_Boolean"
+>noskip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-silent &#39;false&#39;</p>
+
+<dt><a name="min-mut-genes-per-path_Integer"
+>min-mut-genes-per-path <i>Integer</i></a></dt>
+
+<dd>
+<p>Pathways with fewer mutated genes than this will be ignored</p>
+
+<p>Default value &#39;1&#39; if not specified</p>
+
+<dt><a name="glm-model-file_Text"
+>glm-model-file <i>Text</i></a></dt>
+
+<dd>
+<p>File outlining the type of model,
+response variable,
+covariants,
+etc.
+for the GLM analysis.
+(See DESCRIPTION).</p>
+
+<dt><a name="processors_Integer"
+>processors <i>Integer</i></a></dt>
+
+<dd>
+<p>Number of processors to use in SMG (requires &#39;foreach&#39; and &#39;doMC&#39; R packages)</p>
+
+<p>Default value &#39;1&#39; if not specified</p>
+
+<dt><a name="aa-range_Integer"
+>aa-range <i>Integer</i></a></dt>
+
+<dd>
+<p>Set how close a &#39;near&#39; match is when searching for amino acid near hits</p>
+
+<p>Default value &#39;2&#39; if not specified</p>
+
+<dt><a name="nuc-range_Integer"
+>nuc-range <i>Integer</i></a></dt>
+
+<dd>
+<p>Set how close a &#39;near&#39; match is when searching for nucleotide position near hits</p>
+
+<p>Default value &#39;5&#39; if not specified</p>
+
+<dt><a name="reference-build_Text"
+>reference-build <i>Text</i></a></dt>
+
+<dd>
+<p>Put either &#34;Build36&#34; or &#34;Build37&#34;</p>
+
+<p>Default value &#39;Build37&#39; if not specified</p>
+
+<dt><a name="show-known-hits_Boolean"
+>show-known-hits <i>Boolean</i></a></dt>
+
+<dd>
+<p>When a finding is novel,
+show known AA in that gene</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noshow-known-hits_Boolean"
+>noshow-known-hits <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make show-known-hits &#39;false&#39;</p>
+
+<dt><a name="glm-clinical-data-file_Text"
+>glm-clinical-data-file <i>Text</i></a></dt>
+
+<dd>
+<p>Clinical traits,
+mutational profiles,
+other mixed clinical data (See DESCRIPTION).</p>
+
+<dt><a name="use-maf-in-glm_Boolean"
+>use-maf-in-glm <i>Boolean</i></a></dt>
+
+<dd>
+<p>Set this flag to use the variant matrix created from the MAF file as variant input to GLM analysis.</p>
+
+<p>Default value &#39;false&#39; (--nouse-maf-in-glm) if not specified</p>
+
+<dt><a name="nouse-maf-in-glm_Boolean"
+>nouse-maf-in-glm <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make use-maf-in-glm &#39;false&#39;</p>
+
+<dt><a name="omimaa-dir_Path"
+>omimaa-dir <i>Path</i></a></dt>
+
+<dd>
+<p>omim amino acid mutation database folder</p>
+
+<dt><a name="cosmic-dir_Path"
+>cosmic-dir <i>Path</i></a></dt>
+
+<dd>
+<p>cosmic amino acid mutation database folder</p>
+
+<dt><a name="verbose_Boolean"
+>verbose <i>Boolean</i></a></dt>
+
+<dd>
+<p>turn on to display larger working output</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noverbose_Boolean"
+>noverbose <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make verbose &#39;false&#39;</p>
+
+<dt><a name="clinical-correlation-matrix-file_Text"
+>clinical-correlation-matrix-file <i>Text</i></a></dt>
+
+<dd>
+<p>Optionally store the sample-vs-gene matrix used internally during calculations.</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec5" href="#___top">DESCRIPTION</a></h1>
+
+<p>This command can be used to run all of the MuSiC analysis tools on a set of data.
+Please see the individual tools for further description of the parameters.</p>
+<br/>
+<h1><a name="___sec6" href="#___top">AUTHORS</a></h1>
+
+<pre> Thomas B. Mooney, M.S.</pre>
+<br/>
+<h1><a name="___sec7" href="#___top">CREDITS</a></h1>
+
+<p>Please see the credits for <b>genome-music</b>(1).</p>
+<br/>
+<h1><a name="___sec8" href="#___top">SEE ALSO</a></h1>
+
+<p><b>genome-music</b>(1),
+<b>genome-music-path-scan</b>(1),
+<b>genome-music-smg</b>(1),
+<b>genome-music-clinical-correlation</b>(1),
+<b>genome-music-mutation-relation</b>(1),
+<b>genome-music-cosmic-omim</b>(1),
+<b>genome-music-proximity</b>(1),
+<b>genome-music-pfam</b>(1)</p>
+<br/>
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

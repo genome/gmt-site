@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140813143935" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140813143935" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <div class="doc_nav_path">
+  <p>
+  <a href="#">genome</a> ::
+  <a href="/packages/genome-music/documentation.html">music</a> ::
+  <span class="last">cosmic-omim</span>
+  </p>
+</div>
+<h1><a name="___top"></a>
+<p>genome music cosmic-omim</p>
+</h1>
+
+<ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">REQUIRED ARGUMENTS</a></li>
+<li><a href="#___sec4">OPTIONAL ARGUMENTS</a></li>
+<li><a href="#___sec5">DESCRIPTION</a></li>
+<li><a href="#___sec6">LICENSE</a></li>
+<li><a href="#___sec7">AUTHORS</a></li>
+<li><a href="#___sec8">CREDITS</a></li>
+<li><a href="#___sec9">SEE ALSO</a></li></ul>
+
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
+
+<p>genome music cosmic-omim - Compare the amino acid changes of supplied mutations to COSMIC and OMIM databases.</p>
+<br/>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
+
+<p>This document describes genome music cosmic-omim (2014-02-13 at 08:01:07)</p>
+<br/>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music cosmic-omim --maf-file=?
+--output-file=?
+--reference-build=?
+[--omimaa-dir=?] [--cosmic-dir=?] [--verbose] [--wu-annotation-headers] [--aa-range=?] [--nuc-range=?] [--show-known-hits]</p>
+
+<pre> ... music cosmic-omim \
+        --maf-file input_dir/myMAF.tsv \
+        --output-file output_dir/myMAF_output.tsv \
+        --no-verbose
+
+ ... music cosmic-omim \
+        --maf-file input_dir/myMAF.tsv \
+        --output-file output_dir/myMAF_output.tsv \
+        --omimaa-dir omim_dir/ \
+        --cosmic-dir cosmic_dir/ \
+        --no-verbose</pre>
+<br/>
+<h1><a name="___sec3" href="#___top">REQUIRED ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="maf-file_Path"
+>maf-file <i>Path</i></a></dt>
+
+<dd>
+<p>list of annotated mutations in MAF format (or any file with MAF+annotation headers)</p>
+
+<dt><a name="output-file_Path"
+>output-file <i>Path</i></a></dt>
+
+<dd>
+<p>Output file contains the input file with two columns appended to the end,
+corresponding to cosmic and omim mutation comparisons,
+respectively</p>
+
+<dt><a name="reference-build_Text"
+>reference-build <i>Text</i></a></dt>
+
+<dd>
+<p>Put either &#34;Build36&#34; or &#34;Build37&#34;</p>
+
+<p>Default value &#39;Build37&#39; if not specified</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec4" href="#___top">OPTIONAL ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="omimaa-dir_Path"
+>omimaa-dir <i>Path</i></a></dt>
+
+<dd>
+<p>omim amino acid mutation database folder</p>
+
+<dt><a name="cosmic-dir_Path"
+>cosmic-dir <i>Path</i></a></dt>
+
+<dd>
+<p>cosmic amino acid mutation database folder</p>
+
+<dt><a name="verbose_Boolean"
+>verbose <i>Boolean</i></a></dt>
+
+<dd>
+<p>Use this to display the larger working output</p>
+
+<p>Default value &#39;false&#39; (--noverbose) if not specified</p>
+
+<dt><a name="noverbose_Boolean"
+>noverbose <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make verbose &#39;false&#39;</p>
+
+<dt><a name="wu-annotation-headers_Boolean"
+>wu-annotation-headers <i>Boolean</i></a></dt>
+
+<dd>
+<p>Use this if input MAF contains WUSTL annotation format headers</p>
+
+<p>Default value &#39;false&#39; (--nowu-annotation-headers) if not specified</p>
+
+<dt><a name="nowu-annotation-headers_Boolean"
+>nowu-annotation-headers <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make wu-annotation-headers &#39;false&#39;</p>
+
+<dt><a name="aa-range_Integer"
+>aa-range <i>Integer</i></a></dt>
+
+<dd>
+<p>Set how close a &#39;near&#39; match is when searching for amino acid near hits</p>
+
+<p>Default value &#39;2&#39; if not specified</p>
+
+<dt><a name="nuc-range_Integer"
+>nuc-range <i>Integer</i></a></dt>
+
+<dd>
+<p>Set how close a &#39;near&#39; match is when searching for nucleotide position near hits</p>
+
+<p>Default value &#39;5&#39; if not specified</p>
+
+<dt><a name="show-known-hits_Boolean"
+>show-known-hits <i>Boolean</i></a></dt>
+
+<dd>
+<p>When a finding is novel,
+show known AA in that gene</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noshow-known-hits_Boolean"
+>noshow-known-hits <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make show-known-hits &#39;false&#39;</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec5" href="#___top">DESCRIPTION</a></h1>
+
+<p>This tool looks at the amino acid changes for the given set of mutations and compares the genomic coordinates as well as the affected amino acid to the coordinates and amino acids of all cancer-specific mutations listed in the Cosmic and OMIM databases.
+The database files are specially prepared for this task and provided with the MuSiC suite.
+The tool reports various types of matches,
+including matches within &#34;near proximity&#34;,
+where &#34;near proximity&#34; is currently defined as a linear DNA distance of 5 bases or 2 amino acids.
+(This type of matching helps to account for the possibility of subtle differences in reported positions for variants due to differences in transcript definitions or other things of this nature.) Any site without a match in a particular databases is reported as &#34;novel&#34; with respect to that database.</p>
+
+<p>The output of this script returns each row the original input MAF file with two columns appended to the end of each,
+one column for each of the databases.
+Also included is a STDOUT printout of a summary of what was found in the input MAF.
+Neither output can be suppressed in the current version.
+The --verbose option is used to display working notes that are useful for various purposes in debugging potential MAF problems.
+The Omim and Cosmic directories must point to the output of the downloader,
+named appropriately,
+as they don&#39;t recognize the OMIM database in the raw download format.</p>
+
+<p>This tool only compares build 36 or build 37 coordinates that are specified in Cosmic to the coordinates in your maf file.
+This is a weakness of the Cosmic database (not all position entries are currently available for both builds) that is out of our control.</p>
+
+<p>In addition to the standard version 2.3 MAF headers,
+there needs to be 3 columns appended.
+These column headers in the MAF must have these names in the header in order for the tool to find them: transcript_name - the transcript name,
+such as NM_000028 amino_acid_change - the amino acid change,
+such as p.R290H c_position - the nucleotide position changed,
+such as c.869</p>
+<br/>
+<h1><a name="___sec6" href="#___top">LICENSE</a></h1>
+
+<p>Copyright (C) 2010-2011 Washington University in St.
+Louis.</p>
+
+<p>It is released under the Lesser GNU Public License (LGPL) version 3.
+See the associated LICENSE file in this distribution.</p>
+<br/>
+<h1><a name="___sec7" href="#___top">AUTHORS</a></h1>
+
+<pre> Brian Dunford-Shore
+ David Larson, Ph.D.
+ Michael C. Wendl, Ph.D.
+ William Schierding, M.S.</pre>
+<br/>
+<h1><a name="___sec8" href="#___top">CREDITS</a></h1>
+
+<p>This tool depends on copies of data from the following databases,
+packaged in a form useable for quick analysis:</p>
+
+<pre> * COSMIC - http://www.sanger.ac.uk/genetics/CGP/cosmic/
+ * OMIM - http://www.ncbi.nlm.nih.gov/omim</pre>
+<br/>
+<h1><a name="___sec9" href="#___top">SEE ALSO</a></h1>
+
+<p><b>genome-music</b>(1),
+<b>genome</b>(1)</p>
+<br/>
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

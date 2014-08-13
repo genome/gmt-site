@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140813143935" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140813143935" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <div class="doc_nav_path">
+  <p>
+  <a href="#">genome</a> ::
+  <a href="/packages/genome-music/documentation.html">music</a> ::
+  <span class="last">mutation-relation</span>
+  </p>
+</div>
+<h1><a name="___top"></a>
+<p>genome music mutation-relation</p>
+</h1>
+
+<ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">REQUIRED ARGUMENTS</a></li>
+<li><a href="#___sec4">OPTIONAL ARGUMENTS</a></li>
+<li><a href="#___sec5">DESCRIPTION</a></li>
+<li><a href="#___sec6">ARGUMENTS</a></li>
+<li><a href="#___sec7">AUTHORS</a></li></ul>
+
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
+
+<p>genome music mutation-relation - Identify relationships of mutation concurrency or mutual exclusivity in genes across cases.</p>
+<br/>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
+
+<p>This document describes genome music mutation-relation version 0.0401 (2014-02-13 at 08:01:08)</p>
+<br/>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music mutation-relation --bam-list=?
+--maf-file=?
+--output-file=?
+[--mutation-matrix-file=?] [--permutations=?] [--gene-list=?] [--skip-non-coding] [--skip-silent]</p>
+
+<pre> ... music mutation-relation \
+        --maf-file /path/myMAF.tsv \
+        --permutations 1000 \
+        --output-file /path/mutation_relation.csv</pre>
+<br/>
+<h1><a name="___sec3" href="#___top">REQUIRED ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="bam-list_Text"
+>bam-list <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited list of BAM files [sample_name,
+normal_bam,
+tumor_bam] (See Description)</p>
+
+<dt><a name="maf-file_Text"
+>maf-file <i>Text</i></a></dt>
+
+<dd>
+<p>List of mutations in MAF format</p>
+
+<dt><a name="output-file_Text"
+>output-file <i>Text</i></a></dt>
+
+<dd>
+<p>Results of mutation-relation tool</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec4" href="#___top">OPTIONAL ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="mutation-matrix-file_Text"
+>mutation-matrix-file <i>Text</i></a></dt>
+
+<dd>
+<p>Optionally store the sample-vs-gene matrix used during calculations.</p>
+
+<dt><a name="permutations_Number"
+>permutations <i>Number</i></a></dt>
+
+<dd>
+<p>Number of permutations used to determine P-values</p>
+
+<p>Default value &#39;100&#39; if not specified</p>
+
+<dt><a name="gene-list_Text"
+>gene-list <i>Text</i></a></dt>
+
+<dd>
+<p>List of genes to test,
+typically SMGs.
+If unspecified,
+all genes in MAF are tested.</p>
+
+<dt><a name="skip-non-coding_Boolean"
+>skip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip non-coding mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-non-coding_Boolean"
+>noskip-non-coding <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-non-coding &#39;false&#39;</p>
+
+<dt><a name="skip-silent_Boolean"
+>skip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip silent mutations from the provided MAF file</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-silent_Boolean"
+>noskip-silent <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-silent &#39;false&#39;</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec5" href="#___top">DESCRIPTION</a></h1>
+
+<p>This module parses a list of mutations in MAF format and attempts to determine relationships among mutated genes.
+It employs a correlation test to see whether or not any two genes are mutated concurrently (positive correlation) or mutually exclusively (negative correlation).
+Because of the possibility of largely varying numbers of mutations present in different genes,
+P-values are calculated using restricted permutations that take into account the distribution of mutation counts among the samples.
+In the output file,
+&#39;pand&#39; is the P-value for concurrent mutation events,
+and &#39;pexc&#39; is the P-value for mutually exclusive mutation events.</p>
+<br/>
+<h1><a name="___sec6" href="#___top">ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="--bam-list"
+>--bam-list</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>Provide a file containing sample names and normal/tumor BAM locations for each.
+Use the tab- delimited format [sample_name normal_bam tumor_bam] per line.
+This tool only needs sample_name,
+so all other columns can be skipped.
+The sample_name must be the same as the tumor sample names used in the MAF file (16th column,
+with the header Tumor_Sample_Barcode).</a></dt>
+</dl>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec7" href="#___top">AUTHORS</a></h1>
+
+<pre> Nathan D. Dees, Ph.D.
+ Qunyuan Zhang, Ph.D.</pre>
+<br/>
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

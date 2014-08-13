@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  
+  
+
+  <head>
+    <title>Genome MuSiC (0.4)</title>
+    <link rel="shortcut icon" href="/gmt_favicon.png" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="en" />
+<link rel="stylesheet" href="/res/css/reset.css?20140813143935" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20140813143935" media="screen,print"/>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
+<script type="text/javascript" src="/res/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu_main a").currentPage({
+            indexPage: "index.html",
+            anyPath: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24132169-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+          <div id="menu_top">
+              <a href="/index.html" alt="GMT Main Site" id="gmt_link"> </a>
+          </div>
+
+          <div id="title">
+              <div id="icon">
+                  
+                    <img src="/packages/genome-music/res/images/icon_48.png" width="48" height="48" alt="Genome MuSiC"/>
+                  
+              </div>
+              <div id="site_title">
+                  <h1>Genome MuSiC <span class="version">0.4</span></h1>
+              </div>
+          </div>
+
+          <div id="menu_main">
+              <ul>
+                  
+                  <li><a href="index.html">Overview</a></li>
+                  
+                  <li><a href="documentation.html">Documentation</a></li>
+                  
+                  <li><a href="install.html">Install</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+      <div id="content">
+
+        <div id="helix_bottom">
+          <img src="/res/images/helix_bottom.png" width="230" height="49" alt="helix_bottom" />
+        </div>
+
+        <div id="content_main">
+
+          <h2></h2>
+          <div class="rounded_bg">
+              <div class="doc_nav_path">
+  <p>
+  <a href="#">genome</a> ::
+  <a href="/packages/genome-music/documentation.html">music</a> ::
+  <span class="last">smg</span>
+  </p>
+</div>
+<h1><a name="___top"></a>
+<p>genome music smg</p>
+</h1>
+
+<ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">REQUIRED ARGUMENTS</a></li>
+<li><a href="#___sec4">OPTIONAL ARGUMENTS</a></li>
+<li><a href="#___sec5">DESCRIPTION</a></li>
+<li><a href="#___sec6">ARGUMENTS</a></li>
+<li><a href="#___sec7">AUTHORS</a></li></ul>
+
+<h1><a name="___sec0" href="#___top">NAME</a></h1>
+
+<p>genome music smg - Identify significantly mutated genes.</p>
+<br/>
+<h1><a name="___sec1" href="#___top">VERSION</a></h1>
+
+<p>This document describes genome music smg version 0.0401 (2014-02-13 at 08:01:08)</p>
+<br/>
+<h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
+
+<p>genome music smg --gene-mr-file=?
+--output-file=?
+[--max-fdr=?] [--skip-low-mr-genes] [--bmr-modifier-file=?] [--processors=?]</p>
+
+<pre> ... music smg \
+      --gene-mr-file output_dir/gene_mrs \
+      --output-file output_dir/smgs</pre>
+
+<p>(A &#34;gene-mr-file&#34; can be generated using the tool &#34;music bmr calc-bmr&#34;.)</p>
+<br/>
+<h1><a name="___sec3" href="#___top">REQUIRED ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="gene-mr-file_Text"
+>gene-mr-file <i>Text</i></a></dt>
+
+<dd>
+<p>File with per-gene mutation rates (Created using &#34;music bmr calc-bmr&#34;)</p>
+
+<dt><a name="output-file_Text"
+>output-file <i>Text</i></a></dt>
+
+<dd>
+<p>Output file that will list significantly mutated genes and their p-values</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec4" href="#___top">OPTIONAL ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="max-fdr_Number"
+>max-fdr <i>Number</i></a></dt>
+
+<dd>
+<p>The maximum allowed false discovery rate for a gene to be considered an SMG</p>
+
+<p>Default value &#39;0.2&#39; if not specified</p>
+
+<dt><a name="skip-low-mr-genes_Boolean"
+>skip-low-mr-genes <i>Boolean</i></a></dt>
+
+<dd>
+<p>Skip testing genes with MRs lower than the background MR</p>
+
+<p>Default value &#39;true&#39; if not specified</p>
+
+<dt><a name="noskip-low-mr-genes_Boolean"
+>noskip-low-mr-genes <i>Boolean</i></a></dt>
+
+<dd>
+<p>Make skip-low-mr-genes &#39;false&#39;</p>
+
+<dt><a name="bmr-modifier-file_Text"
+>bmr-modifier-file <i>Text</i></a></dt>
+
+<dd>
+<p>Tab delimited multipliers per gene that modify BMR before testing [gene_name bmr_modifier]</p>
+
+<dt><a name="processors_Integer"
+>processors <i>Integer</i></a></dt>
+
+<dd>
+<p>Number of processors to use (requires &#39;foreach&#39; and &#39;doMC&#39; R packages)</p>
+
+<p>Default value &#39;1&#39; if not specified</p>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec5" href="#___top">DESCRIPTION</a></h1>
+
+<p>This script runs R-based statistical tools to identify Significantly Mutated Genes (SMGs),
+when given per-gene mutation rates categorized by mutation type,
+and the overall background mutation rates (BMRs) for each of those categories (gene_mr_file,
+created using &#34;music bmr calc-bmr&#34;).</p>
+
+<p>P-values and false discovery rates (FDRs) for each gene in gene_mr_file is calculated using three tests: Fisher&#39;s Combined P-value test (FCPT),
+Likelihood Ratio test (LRT),
+and the Convolution test (CT).
+For a gene,
+if its FDR for at least 2 of these tests is &#60;= max_fdr,
+it will be output as an SMG.
+Another output file with prefix &#34;_detailed&#34; will have p-values and FDRs for all genes.</p>
+<br/>
+<h1><a name="___sec6" href="#___top">ARGUMENTS</a></h1>
+
+<dl>
+<dt><a name="--bmr-modifier-file"
+>--bmr-modifier-file</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>The user can provide a BMR modifier for each gene in the ROI file,
+which is a multiplier for the categorized background mutation rates,
+before testing them against the gene&#39;s categorized mutation rates.
+Such a file can be used to correct for regional or systematic bias in mutation rates across the genome that may be correlated to CpG deamination or DNA repair processes like transcription-coupled repair or mismatch repair.
+Mutation rates have also been associated with DNA replication timing,
+where higher mutation rates are seen in late replicating regions.
+Note that the same per-gene multiplier is used on each mutation category of BMR.
+Any genes from the ROI file that are not in the BMR modifier file will be tested against unmodified overall BMRs per mutation category.
+BMR modifiers of &#60;=0 are not permitted,
+because that&#39;s just silly.</a></dt>
+</dl>
+
+<dt><a name="--skip-low-mr-genes"
+>--skip-low-mr-genes</a></dt>
+
+<dd>
+<dl>
+<dt><a 
+>Genes with consistently lower MRs than the BMRs across mutation categories,
+may show up in the results as an SMG (by CT or LRT).
+If such genes are not of interest,
+they may be assigned a p-value of 1.
+This should also speed things up.
+Genes with higher Indel or Truncation rates than the background will not be skipped even if the gene&#39;s overall MR is lower than the BMR.
+If bmr-modifiers are applied,
+this step uses the modified BMRs instead.</a></dt>
+</dl>
+</dd>
+</dl>
+<br/>
+<h1><a name="___sec7" href="#___top">AUTHORS</a></h1>
+
+<pre> Qunyuan Zhang, Ph.D.
+ Cyriac Kandoth, Ph.D.
+ Nathan D. Dees, Ph.D.</pre>
+<br/>
+
+          </div>
+            
+            
+        </div>
+
+        <div id="content_sidebar">
+          
+  <div id="rounded_bg">
+    <div align="center">
+      <a href="install.html" class="btn_install">Install</a> <br/>
+
+      
+
+      
+        <a href="http://biostars.org/t/MuSiC" class="btn_get_help">Get Help</a> <br />
+      
+    </div>
+  </div>
+  <br/>
+
+
+
+  <div class="sidebar_menu">
+    <h3>Versions</h3>
+    <hr/>
+    <ul>
+    
+      <li>
+      <a href="install.html">0.4</a>
+      </li>
+    
+    </ul>
+  </div>
+  <br/>
+
+
+
+
+
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>Genome Modeling Tools is produced by <a href="http://genome.wustl.edu/">The Genome Institute at Washington University School of Medicine</a></p>
+
+      </div>
+    </div>
+  </body>
+</html>

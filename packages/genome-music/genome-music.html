@@ -78,84 +78,33 @@
 
           <h2></h2>
           <div class="rounded_bg">
-              <div class="doc_nav_path">
-  <p>
-  <a href="#">genome</a> ::
-  <span class="last">music</span>
-  </p>
-</div>
-
-<div id="sub_commands_container">
-  <h1>sub commands</h1>
-  <div id="sub_commands">
-    <div>
-      <table>
-
-        <tbody><tr><td><a href="/packages/genome-music/genome-music-proximity.html">proximity</a></td>
-          <td>Perform a proximity analysis on a list of mutations.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-cosmic-omim.html">cosmic-omim</a></td>
-          <td>Compare the amino acid changes of supplied mutations to COSMIC and OMIM databases.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-play.html">play</a></td>
-          <td>Run the full suite of MuSiC tools sequentially.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-clinical-correlation.html">clinical-correlation</a></td>
-          <td>Correlate phenotypic traits against mutated genes, or against individual variants</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-pfam.html">pfam</a></td>
-          <td>Add Pfam annotation to a MAF file</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-mutation-relation.html">mutation-relation</a></td>
-          <td>Identify relationships of mutation concurrency or mutual exclusivity in genes across cases.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-smg.html">smg</a></td>
-          <td>Identify significantly mutated genes.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-plot.html">plot</a></td>
-          <td>Generate relevant plots and visualizations for MuSiC.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-survival.html">survival</a></td>
-          <td>Create survival plots and P-values for clinical and mutational phenotypes.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-path-scan.html">path-scan</a></td>
-          <td>Find signifcantly mutated pathways in a cohort given a list of somatic mutations.</td></tr>
-
-        <tr><td><a href="/packages/genome-music/genome-music-bmr.html">bmr</a></td>
-          <td>Calculate gene coverages and background mutation rates.</td></tr>
-
-      </tbody></table>
-    </div>
-  </div>
-</div>
-
-<h1><a name="___top"></a>
-  <p>genome music</p>
+              <h1><a name="___top"></a>
+<p>genome music</p>
 </h1>
 
 <ul>
-  <li><a href="#___sec0">NAME</a></li>
-  <li><a href="#___sec1">VERSION</a></li>
-  <li><a href="#___sec2">SYNOPSIS</a></li>
-  <li><a href="#___sec3">DESCRIPTION</a></li>
-  <li><a href="#___sec4">LICENSE</a></li>
-  <li><a href="#___sec5">AUTHORS</a></li>
-  <li><a href="#___sec6">CREDITS</a></li>
-  <li><a href="#___sec7">BUGS</a></li>
-  <li><a href="#___sec8">SEE ALSO</a></li></ul>
+<li><a href="#___sec0">NAME</a></li>
+<li><a href="#___sec1">VERSION</a></li>
+<li><a href="#___sec2">SYNOPSIS</a></li>
+<li><a href="#___sec3">DESCRIPTION</a></li>
+<li><a href="#___sec4">LICENSE</a></li>
+<li><a href="#___sec5">AUTHORS</a></li>
+<li><a href="#___sec6">CREDITS</a></li>
+<li><a href="#___sec7">BUGS</a></li>
+<li><a href="#___sec8">SEE ALSO</a></li></ul>
 
 <h1><a name="___sec0" href="#___top">NAME</a></h1>
 
 <p>genome music - Mutational Significance in Cancer (Cancer Mutation Analysis)</p>
-<br>
+<br/>
 <h1><a name="___sec1" href="#___top">VERSION</a></h1>
 
-<p>This document describes genome music version 0.0401 (2013-12-30 at 16:01:08)</p>
-<br>
+<p>This document describes genome music version 0.0401 (2014-02-13 at 08:01:07)</p>
+<br/>
 <h1><a name="___sec2" href="#___top">SYNOPSIS</a></h1>
 
 <p>genome music ...</p>
-<br>
+<br/>
 <h1><a name="___sec3" href="#___top">DESCRIPTION</a></h1>
 
 <p>The MuSiC suite is a set of tools aimed at discovering the significance of somatic mutations found within a given cohort of cancer samples,
@@ -163,20 +112,24 @@ and with respect to a variety of external data sources.
 The standard inputs required are:</p>
 
 <dl>
-  <dt><a name="1._mapped_reads_in_BAM_format">1.
-    mapped reads in BAM format</a></dt>
+<dt><a name="1._mapped_reads_in_BAM_format"
+>1.
+mapped reads in BAM format</a></dt>
 
-  <dd>
-  </dd><dt><a name="2._predicted_or_validated_SNVs_or_indels_in_mutation_annotation_format_(MAF)">2.
-    predicted or validated SNVs or indels in mutation annotation format (MAF)</a></dt>
+<dd>
+<dt><a name="2._predicted_or_validated_SNVs_or_indels_in_mutation_annotation_format_(MAF)"
+>2.
+predicted or validated SNVs or indels in mutation annotation format (MAF)</a></dt>
 
-  <dd>
-  </dd><dt><a name="3._a_list_of_regions_of_interest_(typically_the_boundaries_of_coding_exons)">3.
-    a list of regions of interest (typically the boundaries of coding exons)</a></dt>
+<dd>
+<dt><a name="3._a_list_of_regions_of_interest_(typically_the_boundaries_of_coding_exons)"
+>3.
+a list of regions of interest (typically the boundaries of coding exons)</a></dt>
 
-  <dd>
-  </dd><dt><a name="4._any_relevant_numeric_or_categorical_clinical_data.">4.
-    any relevant numeric or categorical clinical data.</a></dt>
+<dd>
+<dt><a name="4._any_relevant_numeric_or_categorical_clinical_data."
+>4.
+any relevant numeric or categorical clinical data.</a></dt>
 </dl>
 
 <p>The formats for inputs 3.
@@ -184,46 +137,48 @@ and 4.
 are:</p>
 
 <dl>
-  <dt><a name="3._Regions_of_Interest_File:">3.
-    Regions of Interest File:</a></dt>
+<dt><a name="3._Regions_of_Interest_File:"
+>3.
+Regions of Interest File:</a></dt>
 
-  <dd>
-  <ul>
-    <li>Do not use headers</li>
+<dd>
+<ul>
+<li>Do not use headers</li>
 
-    <li>4 columns,
-    which are [chromosome start-position(1-based) stop-position(1-based) gene_name]</li>
-  </ul>
+<li>4 columns,
+which are [chromosome start-position(1-based) stop-position(1-based) gene_name]</li>
+</ul>
 
-  </dd><dt><a name="4._Clinical_Data_Files:">4.
-    Clinical Data Files:</a></dt>
+<dt><a name="4._Clinical_Data_Files:"
+>4.
+Clinical Data Files:</a></dt>
 
-  <dd>
-  <ul>
-    <li>Headers are required</li>
+<dd>
+<ul>
+<li>Headers are required</li>
 
-    <li>At least 1 sample_id column and 1 attribute column,
-    with the format being [sample_id clinical_data_attribute clinical_data_attribute ...]</li>
+<li>At least 1 sample_id column and 1 attribute column,
+with the format being [sample_id clinical_data_attribute clinical_data_attribute ...]</li>
 
-    <li>The sample_id must match the sample_id listed in the MAF under "Tumor_Sample_Barcode" for relating the mutations of this sample.</li>
+<li>The sample_id must match the sample_id listed in the MAF under &#34;Tumor_Sample_Barcode&#34; for relating the mutations of this sample.</li>
 
-    <li>The header for each clinical_data_attribute will appear in the output file to denote relationships with the mutation data from the MAF.</li>
-  </ul>
-  </dd>
+<li>The header for each clinical_data_attribute will appear in the output file to denote relationships with the mutation data from the MAF.</li>
+</ul>
+</dd>
 </dl>
 
 <p>Descriptions for the usage of each tool (each sub-command) can be found separately.</p>
 
 <p>The <b>play</b> command runs all of the sub-commands serially on a selected input set.</p>
-<br>
+<br/>
 <h1><a name="___sec4" href="#___top">LICENSE</a></h1>
 
-<p>Copyright (C) 2007-2013 Washington University in St.
+<p>Copyright (C) 2007-2014 Washington University in St.
 Louis.</p>
 
 <p>MuSiC is released under the Lesser GNU Public License (LGPL) version 3.
 See the associated LICENSE file in this distribution.</p>
-<br>
+<br/>
 <h1><a name="___sec5" href="#___top">AUTHORS</a></h1>
 
 <p>This software is developed by the analysis and engineering teams at The Genome Institute at Washington University School of Medicine in St.
@@ -259,7 +214,7 @@ and Li Ding.
 2012.
 MuSiC: Identifying mutational significance in cancer genomes.
 Genome Research 22:1589-1598.</p>
-<br>
+<br/>
 <h1><a name="___sec6" href="#___top">CREDITS</a></h1>
 
 <p>The MuSiC suite uses tabix,
@@ -276,17 +231,16 @@ packaged in a form useable for quick analysis:</p>
  * SMART - http://smart.embl-heidelberg.de/
  * SUPERFAMILY - http://supfam.cs.bris.ac.uk/SUPERFAMILY/
  * PatternScan - http://www.expasy.ch/prosite/</pre>
-<br>
+<br/>
 <h1><a name="___sec7" href="#___top">BUGS</a></h1>
 
 <p>For defects with any software in the genome namespace,
 contact genome-dev ~at~ genome.wustl.edu.</p>
-<br>
+<br/>
 <h1><a name="___sec8" href="#___top">SEE ALSO</a></h1>
 
 <p><b>genome</b>(1)</p>
-<br>
-
+<br/>
 
           </div>
             
