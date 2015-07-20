@@ -2,7 +2,7 @@
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title>Genome Modeling Tools - JoinX v1.1 Released</title>
+    <title>Genome Modeling Tools - SomaticSniper v1.0.5.0</title>
     <link rel="shortcut icon" href="/gmt_favicon.png" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="content-language" content="en" />
@@ -71,16 +71,29 @@
               
 
 <div class="post rounded_bg">
-  <h2 class="entry-title"><a href="/2011/06/20/joinx_1.1_released.html">JoinX v1.1 Released</a></h2>
-  <div class="entry-date"><abbr title="June 20, 2011" class="published">June 20, 2011</abbr></div>
+  <h2 class="entry-title"><a href="/2015/07/16/somatic-sniper_v1.0.5.0_released.html">SomaticSniper v1.0.5.0</a></h2>
+  <div class="entry-date"><abbr title="July 16, 2015" class="published">July 16, 2015</abbr></div>
   <div class="entry-content">
     
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/somatic-sniper/res/images/gmt_somatic_sniper_48.png" /></div>
+      </div>
+    
 
-    <p>
-Joinx is a lightweight tool for performing set operations (e.g., intersection, difference, …) on genomic data contained in .bed files. It also provides some limited analysis functions (concordance reports). An important assumption that joinx makes is that the input data is always sorted. This allows it to compute its results in an efficient manner.
-</p>
-<p> <a href="/joinx">More Information</a> </p>
+    <h4 id="major-changes">Major Changes</h4>
+<p>This release alters how counts and average base qualities are reported in the VCF. Previous versions double counted ambiguous bases and improperly restricted the <code>BCOUNT</code> field to bases called in the tumor and normal genotypes (see <a href="https://github.com/genome/somatic-sniper/issues/5">#5</a>). With this release, <code>DP4</code> is now more stringent, only counting a read as a reference base if it matches that base exactly. <code>BCOUNT</code> is similarly more stringent and no longer reports ambiguous bases. </p>
 
+<p>For calculating VAFs from the VCF output, we recommend using the <code>BCOUNT</code> field’s value for your base of interest and dividing by the sum of the values in the <code>BCOUNT</code> field. This will prevent you from including ambiguous bases in your overall depth measure.</p>
+
+<h4 id="minor-changes">Minor Changes</h4>
+<ul>
+  <li><code>CMAKE_INSTALL_PREFIX</code> is now respected if specified during compilation.</li>
+  <li>A compilation error with unit tests on Max OS X (and possibly other platforms) was fixed.</li>
+  <li>Numerous documentation updates</li>
+</ul>
+
+
+<p>You can <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.5.0">download this release on Github.</a></p>
   </div>
 
 </div>

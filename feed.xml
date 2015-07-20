@@ -7,6 +7,56 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>TIGRA-SV Support Migrated</title>
+        <description>&lt;p&gt;Support for TIGRA-SV has migrated to Ken Chen’s laboratory at MD Anderson Cancer Center.
+Please visit http://bioinformatics.mdanderson.org/main/TIGRA for the latest versions and support information. Full source history is still maintained in the github repository.&lt;/p&gt;
+
+
+&lt;p&gt;You can &lt;a href=&quot;https://github.com/genome/tigra-sv/releases/tag/migrated&quot;&gt;download this release on Github.&lt;/a&gt;&lt;/p&gt;</description>
+        <pubDate>Mon, 20 Jul 2015 00:00:00 -0500</pubDate>
+        <link>/2015/07/20/tigra-sv_migrated_released.html</link>
+        <guid isPermaLink="true">/2015/07/20/tigra-sv_migrated_released.html</guid>
+      </item>
+    
+      <item>
+        <title>SomaticSniper v1.0.5.0</title>
+        <description>&lt;h4 id=&quot;major-changes&quot;&gt;Major Changes&lt;/h4&gt;
+&lt;p&gt;This release alters how counts and average base qualities are reported in the VCF. Previous versions double counted ambiguous bases and improperly restricted the &lt;code&gt;BCOUNT&lt;/code&gt; field to bases called in the tumor and normal genotypes (see &lt;a href=&quot;https://github.com/genome/somatic-sniper/issues/5&quot;&gt;#5&lt;/a&gt;). With this release, &lt;code&gt;DP4&lt;/code&gt; is now more stringent, only counting a read as a reference base if it matches that base exactly. &lt;code&gt;BCOUNT&lt;/code&gt; is similarly more stringent and no longer reports ambiguous bases. &lt;/p&gt;
+
+&lt;p&gt;For calculating VAFs from the VCF output, we recommend using the &lt;code&gt;BCOUNT&lt;/code&gt; field’s value for your base of interest and dividing by the sum of the values in the &lt;code&gt;BCOUNT&lt;/code&gt; field. This will prevent you from including ambiguous bases in your overall depth measure.&lt;/p&gt;
+
+&lt;h4 id=&quot;minor-changes&quot;&gt;Minor Changes&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;CMAKE_INSTALL_PREFIX&lt;/code&gt; is now respected if specified during compilation.&lt;/li&gt;
+  &lt;li&gt;A compilation error with unit tests on Max OS X (and possibly other platforms) was fixed.&lt;/li&gt;
+  &lt;li&gt;Numerous documentation updates&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;You can &lt;a href=&quot;https://github.com/genome/somatic-sniper/releases/tag/v1.0.5.0&quot;&gt;download this release on Github.&lt;/a&gt;&lt;/p&gt;</description>
+        <pubDate>Thu, 16 Jul 2015 00:00:00 -0500</pubDate>
+        <link>/2015/07/16/somatic-sniper_v1.0.5.0_released.html</link>
+        <guid isPermaLink="true">/2015/07/16/somatic-sniper_v1.0.5.0_released.html</guid>
+      </item>
+    
+      <item>
+        <title>SomaticSniper v1.0.4.2</title>
+        <description>&lt;h4 id=&quot;major-changes&quot;&gt;Major Changes&lt;/h4&gt;
+&lt;p&gt;This is a patch release that fixes an edge case where the program would enter an infinite loop.&lt;/p&gt;
+
+&lt;h4 id=&quot;minor-changes&quot;&gt;Minor Changes&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;The source tree now support four digit versions and some documentation has been updated. &lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;You can &lt;a href=&quot;https://github.com/genome/somatic-sniper/releases/tag/v1.0.4.2&quot;&gt;download this release on Github.&lt;/a&gt;&lt;/p&gt;</description>
+        <pubDate>Thu, 23 Apr 2015 00:00:00 -0500</pubDate>
+        <link>/2015/04/23/somatic-sniper_v1.0.4.2_released.html</link>
+        <guid isPermaLink="true">/2015/04/23/somatic-sniper_v1.0.4.2_released.html</guid>
+      </item>
+    
+      <item>
         <title>DGIdb v1.66 Released</title>
         <description>&lt;p&gt;DGIdb version 1.66 has been released - this release contains clinical trial data from MyCancerGenome.&lt;/p&gt;
 
@@ -130,52 +180,6 @@ project page.&lt;/a&gt;&lt;/p&gt;
         <pubDate>Tue, 07 May 2013 00:00:00 -0500</pubDate>
         <link>/2013/05/07/pindel_0.2.4_available.html</link>
         <guid isPermaLink="true">/2013/05/07/pindel_0.2.4_available.html</guid>
-      </item>
-    
-      <item>
-        <title>iBWA Alpha v0.5 Released</title>
-        <description>&lt;p&gt;Source code and Ubuntu 10.04 (64-bit) packages of &lt;a href=&quot;/ibwa/0.5/&quot;&gt;iBWA Alpha v0.5&lt;/a&gt; are now available for testing. iBWA is a fork of &lt;a href=&quot;http://bio-bwa.sourceforge.net&quot;&gt;Heng Li&#39;s BWA aligner&lt;/a&gt; with support for iteratively adding alternate haplotypes, reference patches, and variant hypotheses. This enables you to leverage existing tools and pipelines in the diverse BWA ecosystem while also creating new analysis opportunities.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Take advantage of improvements to the human reference made available by the &lt;a href=&quot;http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/&quot;&gt;Genome Reference Consortium&lt;/a&gt;.
-&lt;/li&gt;&lt;li&gt;Represent alternate alignments in the context of the primary human reference.
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For additional information about BWA please see Heng Li&#39;s &lt;a href=&quot;http://bio-bwa.sourceforge.net&quot;&gt;BWA @ SourceForge&lt;/a&gt; or &lt;a href=&quot;http://bio-bwa.sourceforge.net/bwa.shtml&quot;&gt;BWA&#39;s manual page&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 06 Sep 2012 00:00:00 -0500</pubDate>
-        <link>/2012/09/06/iBWA_0.5_alpha_released.html</link>
-        <guid isPermaLink="true">/2012/09/06/iBWA_0.5_alpha_released.html</guid>
-      </item>
-    
-      <item>
-        <title>Genome MuSiC v0.4 Released</title>
-        <description>&lt;p&gt;&lt;a href=&quot;/packages/genome-music/&quot;&gt;MuSiC v0.4&lt;/a&gt; is now available for download. This release adds new visualization tools, performance improvements, support for TCGA MAF v2.3, and coverage files in UCSC WIG format when BAMs are impractical. Here is a complete changelog:
-&lt;ul&gt;
-    &lt;li&gt;Added tools to generate typical visualizations like Kaplan-Meier survival estimates, and mutation status matrices.&lt;/li&gt;
-    &lt;li&gt;Support for TCGA Mutation Annotation Format (MAF) version 2.3.&lt;/li&gt;
-    &lt;li&gt;Performance improvements in mutation rate calculations, and more efficient memory usage.&lt;/li&gt;
-    &lt;li&gt;Added support for wiggle track format files describing coverage, if BAMs are unavailable.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/p&gt;
-</description>
-        <pubDate>Tue, 21 Aug 2012 00:00:00 -0500</pubDate>
-        <link>/2012/08/21/genome_music_v0.4_released.html</link>
-        <guid isPermaLink="true">/2012/08/21/genome_music_v0.4_released.html</guid>
-      </item>
-    
-      <item>
-        <title>RefCov v0.3 Released</title>
-        <description>&lt;p&gt;
-RefCov v0.3 provides critical fixes and several new features. Fixes include restoring several modules that were absent in the previous release. New features include: 1) cluster-coverage for detecting contiguous clusters of sequence reads across a reference, 2) the ability to evaluate coverage of entire chromosomes using the BAM file header as the region-of-interest, ex. --roi-file-path=$BAM --roi-file-format=bam, 3) normalization of coverage using a defined Perl-compatible equation, 4) relative coverage based on a defined list of size bins, and 5) optional output of the chromosome start and end as BED-style columns.
-&lt;/p&gt;
-&lt;p&gt;
-&lt;a href=&quot;/packages/refcov/&quot;&gt;More Information&lt;/a&gt;
-&lt;/p&gt;
-</description>
-        <pubDate>Wed, 23 May 2012 00:00:00 -0500</pubDate>
-        <link>/2012/05/23/gmt_refcov_0.3_released.html</link>
-        <guid isPermaLink="true">/2012/05/23/gmt_refcov_0.3_released.html</guid>
       </item>
     
   </channel>

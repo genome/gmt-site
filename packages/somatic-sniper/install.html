@@ -5,12 +5,12 @@
   
 
   <head>
-    <title>SomaticSniper (v1.0.4)</title>
+    <title>SomaticSniper (v1.0.5.0)</title>
     <link rel="shortcut icon" href="/gmt_favicon.png" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="content-language" content="en" />
-<link rel="stylesheet" href="/res/css/reset.css?20140819114118" media="screen,print"/>
-<link rel="stylesheet" href="/res/css/main_sub.css?20140819114118" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/reset.css?20150720140317" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main_sub.css?20150720140317" media="screen,print"/>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="/res/js/jquery.currentPage.js"></script>
@@ -52,7 +52,7 @@
                   
               </div>
               <div id="site_title">
-                  <h1>SomaticSniper <span class="version">v1.0.4</span></h1>
+                  <h1>SomaticSniper <span class="version">v1.0.5.0</span></h1>
               </div>
           </div>
 
@@ -103,7 +103,7 @@ sudo yum install zlib-devel ncurses-devel cmake
 
 <h3 id="clone-the-somaticsniper-repository">Clone the SomaticSniper repository</h3>
 
-<p>Recursively clone the git repository</p>
+<p>Clone the git repository.</p>
 
 <p><code>
 git clone git://github.com/genome/somatic-sniper.git
@@ -141,6 +141,10 @@ make test
   <li>Resume following the build instructions.</li>
 </ol>
 
+<h3 id="i-get-a-floating-point-exception-on-running-bam-somaticsniper-whats-going-on">I get a floating point exception on running <code>bam-somaticsniper</code>. What’s going on?</h3>
+
+<p>This has been reported when using reference fasta indexes available via the GATK resource bundle. Please try reindexing your fasta with samtools and rerunning <code>bam-somaticsniper</code>.</p>
+
 
 
           </div>
@@ -171,6 +175,14 @@ make test
     <h3>Versions</h3>
     <hr/>
     <ul>
+    
+      <li>
+      <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.5.0">v1.0.5.0</a>
+      </li>
+    
+      <li>
+      <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.4.2">v1.0.4.2</a>
+      </li>
     
       <li>
       <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.4">v1.0.4</a>

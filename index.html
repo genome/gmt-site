@@ -6,8 +6,8 @@
     <link rel="shortcut icon" href="/gmt_favicon.png" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="content-language" content="en" />
-<link rel="stylesheet" href="/res/css/reset.css?20140819114118" media="screen,print"/>
-<link rel="stylesheet" href="/res/css/main.css?20140819114118" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/reset.css?20150720140317" media="screen,print"/>
+<link rel="stylesheet" href="/res/css/main.css?20150720140317" media="screen,print"/>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml"/>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -66,6 +66,86 @@
         <div id="content">
 
           <div id="content_main">
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2015/07/20/tigra-sv_migrated_released.html">TIGRA-SV Support Migrated</a></h2>
+  <div class="entry-date"><abbr title="July 20, 2015" class="published">July 20, 2015</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/tigra-sv/res/images/icon_48.png" /></div>
+      </div>
+    
+
+    <p>Support for TIGRA-SV has migrated to Ken Chen’s laboratory at MD Anderson Cancer Center.
+Please visit http://bioinformatics.mdanderson.org/main/TIGRA for the latest versions and support information. Full source history is still maintained in the github repository.</p>
+
+
+<p>You can <a href="https://github.com/genome/tigra-sv/releases/tag/migrated">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2015/07/16/somatic-sniper_v1.0.5.0_released.html">SomaticSniper v1.0.5.0</a></h2>
+  <div class="entry-date"><abbr title="July 16, 2015" class="published">July 16, 2015</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/somatic-sniper/res/images/gmt_somatic_sniper_48.png" /></div>
+      </div>
+    
+
+    <h4 id="major-changes">Major Changes</h4>
+<p>This release alters how counts and average base qualities are reported in the VCF. Previous versions double counted ambiguous bases and improperly restricted the <code>BCOUNT</code> field to bases called in the tumor and normal genotypes (see <a href="https://github.com/genome/somatic-sniper/issues/5">#5</a>). With this release, <code>DP4</code> is now more stringent, only counting a read as a reference base if it matches that base exactly. <code>BCOUNT</code> is similarly more stringent and no longer reports ambiguous bases. </p>
+
+<p>For calculating VAFs from the VCF output, we recommend using the <code>BCOUNT</code> field’s value for your base of interest and dividing by the sum of the values in the <code>BCOUNT</code> field. This will prevent you from including ambiguous bases in your overall depth measure.</p>
+
+<h4 id="minor-changes">Minor Changes</h4>
+<ul>
+  <li><code>CMAKE_INSTALL_PREFIX</code> is now respected if specified during compilation.</li>
+  <li>A compilation error with unit tests on Max OS X (and possibly other platforms) was fixed.</li>
+  <li>Numerous documentation updates</li>
+</ul>
+
+
+<p>You can <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.5.0">download this release on Github.</a></p>
+  </div>
+
+</div>
+
+            
+              
+
+<div class="post rounded_bg">
+  <h2 class="entry-title"><a href="/2015/04/23/somatic-sniper_v1.0.4.2_released.html">SomaticSniper v1.0.4.2</a></h2>
+  <div class="entry-date"><abbr title="April 23, 2015" class="published">April 23, 2015</abbr></div>
+  <div class="entry-content">
+    
+      <div class="post_icon">
+          <div class="project_icon"><img src="/packages/somatic-sniper/res/images/gmt_somatic_sniper_48.png" /></div>
+      </div>
+    
+
+    <h4 id="major-changes">Major Changes</h4>
+<p>This is a patch release that fixes an edge case where the program would enter an infinite loop.</p>
+
+<h4 id="minor-changes">Minor Changes</h4>
+<ul>
+  <li>The source tree now support four digit versions and some documentation has been updated. </li>
+</ul>
+
+
+<p>You can <a href="https://github.com/genome/somatic-sniper/releases/tag/v1.0.4.2">download this release on Github.</a></p>
+  </div>
+
+</div>
 
             
               
